@@ -1,4 +1,12 @@
 import React from 'react';
+import Typography from '@material-ui/core/Typography';
+import Link from '../components/Link';
+
+const styles = {
+    paragraph: {
+        marginBottom: 30,
+    }
+}
 
 export const projects = [
     {
@@ -50,23 +58,52 @@ export const projects = [
 ];
 
 export const OpenRocketryInitiative = props => (
-    <div>Open Rocketry Initiative: {props.project.url}</div>
+    <div>
+        <Typography style={styles.paragraph}>
+            The Open Rocketry Initiative (ORI) is an attempt to make experimental rocketry more accessible. Implementing rocket control, automatic chute deployment, and real-time systems monitoring is a complex task, and ORI provides a codebase to give open-source users the chance to explore an implementation of a real-time control system. ORI consists of three simultaneous efforts:
+            
+            <ul>
+                <li><strong>Rocket flight computer</strong> &mdash; measure real-time rocket position and control chute deployment (<Link external href='https://github.com/openrocketryinitiative/carlson' text='repo' />)</li>
+                <li><strong>Smart launchpad</strong> &mdash; trigger launch over WiFi and measure motor thrust curves (<Link external href='https://github.com/openrocketryinitiative/launchpad' text='repo' />)</li>
+                <li><strong>Motors</strong> &mdash; optimize rocket motor thrust curves by adjusting fuel mixtures (<Link external href='https://github.com/openrocketryinitiative/motors' text='repo' />)</li>
+            </ul>
+        </Typography>
+
+        <Typography style={styles.paragraph}>
+            I lead development of the rocket flight computer, lovingly nicknamed Carlson. Sporting a Raspberry Pi Zero, Carlson is built and programmed to monitor real-time rocket orientation during flight. Carlson has a 10-DOF MPU9255 inertial monitoring unit that includes an accelerometer, gyroscope, magnetometer, and barometer. The ORI team has successfully deployed Carlson in numerous launches and the collected orientation data permitted the development of a real-time apogee-detection algorithm.
+        </Typography>
+
+        <Typography style={styles.paragraph}>
+            This algorithm first detects rocket freefall (zero acceleration across all three axes) and then looks for an angle of deviation of more than 90 degrees from vertical. When these two conditions are met, indicating the rocket is falling downwards, the Raspberry Pi shorts a relay that heats some Nichrome wire, igniting the rocket's blast-cap and ejecting the parachute. Here's a video of the <Link external href='https://www.instagram.com/p/Bb0dSJujduq/' text='parachute being ejected' />.
+        </Typography>
+
+        <Typography style={styles.paragraph}>
+            In June 2018, the team had the opportunity to give a brief talk at the NASA Rhode Island Space Grant Symposium in Providence, RI about our work on Carlson, along with the smart launchpad and motor testing. The slides are available on <Link external href='https://docs.google.com/presentation/d/1OxAxDKqtxr4odVjT6q38U2s4oX1R2K-lVKEJCeqgmxo/edit?usp=sharing' text='Google Slides' />.
+        </Typography>
+
+        <Typography styles={styles.parachute}>
+            You can find additional photos and videos of ORI development on our <Link external href='https://www.instagram.com/openrocketryinitiative/' text='Instagram' />.
+        </Typography>
+
+        
+
+    </div>
 );
 
 export const Lunadrop = props => (
-    <div>Lunadrop</div>
+    <Typography>Lunadrop</Typography>
 );
 
 export const Jukebox = props => (
-    <div>Jukebox</div>
+    <Typography>Jukebox</Typography>
 );
 
 export const Audiolux = props => (
-    <div>Audiolux</div>
+    <Typography>Audiolux</Typography>
 );
 
 export const Semio = props => (
-    <div>Semio</div>
+    <Typography>Semio</Typography>
 );
 
 export function getComponent(project) {

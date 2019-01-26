@@ -1,43 +1,71 @@
 import React from 'react';
 import _ from 'lodash';
+import DocumentTitle from 'react-document-title';
 import { Redirect, Link } from 'react-router-dom';
-import { projects, getComponent } from '../assets/projects';
 
 import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+
+import { projects, getComponent } from '../assets/projects';
 
 /* Modify project descriptions in 'src/assets/projects.js'. */
 
+const styles = {
+    backButton: {
+        position: 'absolute',
+        top: 10,
+        left: 10,
+    },
+    backButtonMobile: {
+        textAlign: 'center',
+        marginBottom: 30,
+    },
+};
+
 function ProjectDescription(props) {
+    const { dimensions } = props;
+    const isMobile = dimensions.isMobile;
     const { slug } = props.match.params;
     const project = _.find(projects,
                            obj => { return slug === obj.slug });
+
+    const backButton = () => (
+        <div style={isMobile ? styles.backButtonMobile : styles.backButton}>
+            <Button component={Link} to='/'>
+                Back to home
+            </Button>
+        </div>
+    );
 
     if (!project) {
         return <Redirect to='/' />;
     }
 
     return (
-        <div style={{ textAlign: 'center' }}>
-            <div
-                style={{
-                    textAlign: 'justify',
-                    display: 'inline-block',
-                    width: 800,
-                    minHeight: '80vh'
-                }}
-            >
-                { getComponent(project) }
-            </div>
-            <div>
-                <Button
-                    component={Link}
-                    to='/'
-                    style={{ marginTop: 30 }}
+        <DocumentTitle title={project.title}>
+            <div style={{ textAlign: 'center', width: '100%' }}>
+                { !isMobile && backButton() }
+
+                <Typography variant={isMobile ? 'h5' : 'h4'}>
+                    { project.title }
+                </Typography>
+
+                <div
+                    style={{
+                        textAlign: 'justify',
+                        display: 'inline-block',
+                        maxWidth: 800,
+                        marginTop: 30,
+                        marginBottom: 30,
+                        padding: isMobile ? 10 : 0,
+                    }}
                 >
-                    Back
-                </Button>
+                    { getComponent(project) }
+                </div>
+
+                { isMobile && backButton() }
             </div>
-        </div>
+        </DocumentTitle>
     );
 }
 

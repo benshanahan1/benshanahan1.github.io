@@ -1,4 +1,5 @@
 import React from 'react';
+import DocumentTitle from 'react-document-title';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Header from './Header';
@@ -58,29 +59,35 @@ class App extends React.Component {
 
         const HomeView = props => (
             <div>
-                <AboutMe dimensions={dimensions} />
-                <Projects dimensions={dimensions} />
+                <AboutMe dimensions={dimensions} {...props} />
+                <Projects dimensions={dimensions} {...props} />
             </div>
         );
 
+        const ProjectDescriptionView = props => (
+            <ProjectDescription dimensions={dimensions} {...props} />
+        );
+
         return (
-            <MuiThemeProvider theme={theme}>
+            <DocumentTitle title='Benjamin Shanahan'>
+                <MuiThemeProvider theme={theme}>
 
-                <Header dimensions={dimensions} />
+                    <Header dimensions={dimensions} />
 
-                <BrowserRouter>
-                    <Switch>
-                        <Route
-                            exact path='/:slug'
-                            component={ProjectDescription}
-                        />
-                        <Route component={HomeView} />
-                    </Switch>
-                </BrowserRouter>
+                    <BrowserRouter>
+                        <Switch>
+                            <Route
+                                exact path='/:slug'
+                                component={ProjectDescriptionView}
+                            />
+                            <Route component={HomeView} />
+                        </Switch>
+                    </BrowserRouter>
 
-                <Footer dimensions={dimensions} />
+                    <Footer dimensions={dimensions} />
 
-            </MuiThemeProvider>
+                </MuiThemeProvider>
+            </DocumentTitle>
         );
     }
 }
