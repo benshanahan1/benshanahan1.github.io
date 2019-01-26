@@ -1,0 +1,14 @@
+.aboutText {
+    display: inline-block;
+    max-width: 800px;
+    text-align: justify;
+    padding: 10px;
+}
+
+.profilePictureWrapper {
+    margin-bottom: 10px;
+}
+
+.profilePicture { 
+    border-radius: 3px;
+}
