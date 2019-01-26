@@ -24,13 +24,7 @@ function Projects(props) {
                 { projects.map(project => (
                     <ProjectDisplay
                         key={project.title}
-                        image={project.image}
-                        slug={project.slug}
-                        title={project.title}
-                        description={project.description}
-                        url={project.url}
-                        width={project.width}
-                        height={project.height}
+                        project={project}
                         dimensions={props.dimensions}
                     />
                 ))}

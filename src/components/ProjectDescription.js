@@ -7,10 +7,14 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
 import { projects, getComponent } from '../assets/projects';
+import ProjectDisplay from './ProjectDisplay';
 
 /* Modify project descriptions in 'src/assets/projects.js'. */
 
 const styles = {
+    headerImage: {
+        marginTop: 15,
+    },
     backButton: {
         position: 'absolute',
         top: 10,
@@ -50,12 +54,20 @@ function ProjectDescription(props) {
                     { project.title }
                 </Typography>
 
+                <div style={styles.headerImage}>
+                    <ProjectDisplay
+                        noLink
+                        noTitle
+                        project={project}
+                        dimensions={dimensions}
+                    />
+                </div>
+
                 <div
                     style={{
                         textAlign: 'justify',
                         display: 'inline-block',
                         maxWidth: 800,
-                        marginTop: 30,
                         marginBottom: 30,
                         padding: isMobile ? 10 : 0,
                     }}

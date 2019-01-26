@@ -10,6 +10,7 @@ class ProjectDisplay extends React.Component {
 
     render() {
         const { hover } = this.state;
+        const { project, dimensions, noLink, noTitle } = this.props;
         const {
             slug,
             url,
@@ -18,8 +19,7 @@ class ProjectDisplay extends React.Component {
             description,
             width,
             height,
-            dimensions,
-        } = this.props;
+        } = project;
 
         const isMobile = dimensions.isMobile;
         const screenWidth = dimensions.width - getScrollbarWidth();
@@ -29,6 +29,63 @@ class ProjectDisplay extends React.Component {
         const renderWidth = (width < screenWidth) ? width : screenWidth;
         const renderHeight = renderWidth / aspectRatio;
 
+        let opacity = 1;
+        if (!noLink && hover) {
+            opacity = 0.75;
+        }
+
+        let imageWrapper = (
+            <div style={{ position: 'relative' }}>
+                <img
+                    width='100%'
+                    height='100%'
+                    src={image}
+                    alt={title}
+                    style={{ opacity }}
+                />
+                { !noTitle &&
+                    <div
+                        style={{
+                            position: 'absolute',
+                            top: 0,
+                            left: 0,
+                            verticalAlign: 'middle',
+                            textAlign: 'center',
+                            background: 'white',
+                            opacity: 0.8,
+                            height: 75,
+                            width: '100%',
+                            color: 'black',
+                            borderTop: 'solid 3px pink'
+                        }}
+                    >
+                        <Typography variant='h6'>
+                            { title }
+                        </Typography>
+                        <Typography>
+                            { description }
+                        </Typography>
+                    </div>
+                }
+            </div>
+        );
+
+        // Wrap `image` in Link component.
+        if (!noLink) {
+            imageWrapper = (
+                <Link
+                    onMouseOver={() => this.setState({ hover: true })}
+                    onMouseOut={() => this.setState({ hover: false })}
+                    to={`/${slug}`}
+                    style={{
+                        cursor: 'pointer',
+                    }}
+                >
+                    { imageWrapper }
+                </Link>
+            );
+        }
+
         return (
             <div
                 style={{
@@ -37,51 +94,15 @@ class ProjectDisplay extends React.Component {
                     marginBottom: isMobile ? 10 : 30,
                 }}
             >
-                <Link
-                    onMouseOver={() => this.setState({ hover: true })}
-                    onMouseOut={() => this.setState({ hover: false })}
-                    to={`/${slug}`}
+                <div
                     style={{
                         display: 'inline-block',
                         width: renderWidth,
                         height: renderHeight,
-                        cursor: 'pointer',
                     }}
                 >
-                    <div style={{ position: 'relative' }}>
-                        <img
-                            width='100%'
-                            height='100%'
-                            src={image}
-                            alt={title}
-                            style={{
-                                opacity: hover || isMobile ? 1 : 0.75,
-                            }}
-                        />
-                        <div
-                            style={{
-                                position: 'absolute',
-                                top: 0,
-                                left: 0,
-                                verticalAlign: 'middle',
-                                textAlign: 'center',
-                                background: 'white',
-                                opacity: 0.8,
-                                height: 75,
-                                width: '100%',
-                                color: 'black',
-                                borderTop: 'solid 3px pink'
-                            }}
-                        >
-                            <Typography variant='h6'>
-                                { title }
-                            </Typography>
-                            <Typography>
-                                { description }
-                            </Typography>
-                        </div>
-                    </div>
-                </Link>
+                    { imageWrapper }
+                </div>
             </div>
         );
     }
