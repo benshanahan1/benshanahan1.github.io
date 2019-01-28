@@ -13,7 +13,6 @@ class ProjectDisplay extends React.Component {
         const { project, dimensions, noLink, noTitle } = this.props;
         const {
             slug,
-            url,
             image,
             title,
             description,
@@ -91,7 +90,7 @@ class ProjectDisplay extends React.Component {
                 style={{
                     width: '100%',
                     textAlign: 'center',
-                    marginBottom: isMobile ? 10 : 30,
+                    marginBottom: isMobile ? 10 : 20,
                 }}
             >
                 <div

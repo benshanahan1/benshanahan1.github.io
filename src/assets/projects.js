@@ -1,4 +1,5 @@
 import React from 'react';
+import YouTube from 'react-youtube';
 import Typography from '@material-ui/core/Typography';
 import Link from '../components/Link';
 
@@ -91,33 +92,74 @@ export const OpenRocketryInitiative = props => (
 );
 
 export const Lunadrop = props => (
-    <Typography>Lunadrop</Typography>
+    <div>
+        <Typography style={styles.paragraph}>
+            Lunadrop is a user-friendly autonomous drone delivery system. I worked on this project with a friend from University initially as a DIY-type project, but it turned into a larger endeavor over the course of the semester. In addition to building a physical drone that was able to carry packages up to 1 kilo for ~20-25 minutes, there was a large amount of software that needed to be developed, including a RESTful web API, a user-friendly web app, and code that interacted with the drone's onboard flight controller.
+        </Typography>
+
+        <Typography style={styles.paragraph}>
+            Most of my time was spent on development of the server back-end and the user-facing interface. The back-end was a Python Flask web application connected to a SQL database hosted on a EC2 instance on Amazon Web Services (AWS). The database stored information about the application user and real-time drone positioning (e.g. current coordinates, velocity, altitude, remaining battery voltage, and additional identifying meta information such as carry-capacity). Additionally, we had a separate Manager process that could coordinate multiple drones, assigning them to user orders based on proximity, carry-capacity, and remaining battery level. Since we only prototyped the system with a single drone, we didn't have the chance to fly multiple drones using the developed infrastructure.
+        </Typography>
+
+        <Typography style={styles.paragraph}>
+            The application user interface, or the web page that the user would access on their phone or computer, had a number of different requirements. Most notably, it needed to be mobile-device friendly, since the delivery service required users to be outside for deliveries.
+        </Typography>
+
+        CAD design of gripper mechanism, mounting to drone
+
+        Required to fly over buildings instead of beeline
+
+        Meetings with department of public safety at the University to schedule a live delivery demonstration on one of the main University greens.
+
+        Other related code.
+        https://github.com/IzzyBrand/dro.ne
+
+        Most up-to-date version of the web application.
+        https://github.com/benshanahan1/dronesvr
+
+        <Typography style={styles.paragraph}>
+            Lunadrop is a comprehensive drone delivery system. Immediately after a customer places an order on the website, the delivery gets packaged and strapped to one of the luna drones. The drone then flies autonomously from the central hub to the requested landing site, safely descends to drop off the package, and flies back to the central hub where it awaits the next order.
+        </Typography>
+
+        <Typography style={styles.component}>
+            To publicize the planned live demo and also inform others about Lunadrop, we created a brief teaser video:
+        </Typography>
+
+        <YouTube
+            videoId='Rt-q0L54g0c'
+            opts={{
+                width: '100%',
+                height: props.dimensions.isMobile ? 200 : 500,
+            }}
+        />
+
+    </div>
 );
 
 export const Jukebox = props => (
-    <Typography>Jukebox</Typography>
+    <Typography style={styles.paragraph}>Jukebox</Typography>
 );
 
 export const Audiolux = props => (
-    <Typography>Audiolux</Typography>
+    <Typography style={styles.paragraph}>Audiolux</Typography>
 );
 
 export const Semio = props => (
-    <Typography>Semio</Typography>
+    <Typography style={styles.paragraph}>Semio</Typography>
 );
 
-export function getComponent(project) {
+export function getComponent(project, dimensions) {
     switch (project.component) {
         case 'OpenRocketryInitiative':
-            return <OpenRocketryInitiative project={project} />;
+            return <OpenRocketryInitiative project={project} dimensions={dimensions}/>;
         case 'Lunadrop':
-            return <Lunadrop project={project} />;
+            return <Lunadrop project={project} dimensions={dimensions} />;
         case 'Jukebox':
-            return <Jukebox project={project} />;
+            return <Jukebox project={project} dimensions={dimensions} />;
         case 'Audiolux':
-            return <Audiolux project={project} />;
+            return <Audiolux project={project} dimensions={dimensions} />;
         case 'Semio':
-            return <Semio project={project} />;
+            return <Semio project={project} dimensions={dimensions} />;
         default:
             return <div />;
     }

@@ -72,7 +72,7 @@ function ProjectDescription(props) {
                         padding: isMobile ? 10 : 0,
                     }}
                 >
-                    { getComponent(project) }
+                    { getComponent(project, dimensions) }
                 </div>
 
                 { isMobile && backButton() }
