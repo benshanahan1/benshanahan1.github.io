@@ -61,7 +61,7 @@ export const projects = [
 export const OpenRocketryInitiative = props => (
     <div>
         <Typography style={styles.paragraph}>
-            The Open Rocketry Initiative (ORI) is an attempt to make experimental rocketry more accessible. Implementing rocket control, automatic chute deployment, and real-time systems monitoring is a complex task, and ORI provides a codebase to give open-source users the chance to explore an implementation of a real-time control system. ORI consists of three simultaneous efforts:
+            The Open Rocketry Initiative (ORI) is an attempt to make experimental rocketry more accessible. Implementing rocket control, automatic chute deployment, and real-time systems monitoring is a complex task, and ORI provides a codebase to give open-source users the chance to explore an implementation of a real-time control system. The CAD designs for the rocket components (e.g. tube couplers, blast cap, nose cone, tail fin) are also available online. ORI consists of three simultaneous efforts:
             
             <ul>
                 <li><strong>Rocket flight computer</strong> &mdash; measure real-time rocket position and control chute deployment (<Link external href='https://github.com/openrocketryinitiative/carlson' text='repo' />)</li>
@@ -79,7 +79,7 @@ export const OpenRocketryInitiative = props => (
         </Typography>
 
         <Typography style={styles.paragraph}>
-            In June 2018, the team had the opportunity to give a brief talk at the NASA Rhode Island Space Grant Symposium in Providence, RI about our work on Carlson, along with the smart launchpad and motor testing. The slides are available on <Link external href='https://docs.google.com/presentation/d/1OxAxDKqtxr4odVjT6q38U2s4oX1R2K-lVKEJCeqgmxo/edit?usp=sharing' text='Google Slides' />.
+            In June 2018, as recipients of the NASA Rhode Island Space Grant (RISG), the team had the opportunity to give a brief talk at the RISG Symposium in Providence, RI about our work on Carlson, along with the smart launchpad and motor testing. The slides are available on <Link external href='https://docs.google.com/presentation/d/1OxAxDKqtxr4odVjT6q38U2s4oX1R2K-lVKEJCeqgmxo/edit?usp=sharing' text='Google Slides' />.
         </Typography>
 
         <Typography styles={styles.parachute}>
@@ -94,35 +94,23 @@ export const OpenRocketryInitiative = props => (
 export const Lunadrop = props => (
     <div>
         <Typography style={styles.paragraph}>
-            Lunadrop is a user-friendly autonomous drone delivery system. I worked on this project with a friend from University initially as a DIY-type project, but it turned into a larger endeavor over the course of the semester. In addition to building a physical drone that was able to carry packages up to 1 kilo for ~20-25 minutes, there was a large amount of software that needed to be developed, including a RESTful web API, a user-friendly web app, and code that interacted with the drone's onboard flight controller.
+            Lunadrop is a user-friendly autonomous drone delivery system. I worked on this project with a team initially as a DIY-type project, but it turned into a larger endeavor over the course of the semester. In addition to building a drone capable of carrying packages up to 1 kilo for ~20-25 minutes, we needed to write code that interacted with the drone's onboard flight controller, a RESTful web API, and a user-friendly web app. To  communicate with the drone in-flight, we equipped it with an LTE antenna and sim card for internet connectivity.
         </Typography>
 
         <Typography style={styles.paragraph}>
-            Most of my time was spent on development of the server back-end and the user-facing interface. The back-end was a Python Flask web application connected to a SQL database hosted on a EC2 instance on Amazon Web Services (AWS). The database stored information about the application user and real-time drone positioning (e.g. current coordinates, velocity, altitude, remaining battery voltage, and additional identifying meta information such as carry-capacity). Additionally, we had a separate Manager process that could coordinate multiple drones, assigning them to user orders based on proximity, carry-capacity, and remaining battery level. Since we only prototyped the system with a single drone, we didn't have the chance to fly multiple drones using the developed infrastructure.
+            I developed the server back-end and the website itself. The back-end was a Python Flask web application running on Amazon AWS. The database stored information about real-time drone position (coordinates, velocity, altitude, battery voltage). Additionally, there was a separate process that coordinated multiple drones, assigning them deliveries based on their remaining battery level. The front-end needed to be mobile-friendly, and needed to poll the server to display the drones' positions in real-time on an interface similar to Google Maps.
         </Typography>
 
         <Typography style={styles.paragraph}>
-            The application user interface, or the web page that the user would access on their phone or computer, had a number of different requirements. Most notably, it needed to be mobile-device friendly, since the delivery service required users to be outside for deliveries.
+            We held several meetings with the University department of public safety to plan a live demonstration of Lunadrop delivery in action. For safety, we were required to fly above buildings as much as possible (instead of point-to-point), so we implemented the ability to upload a waypoint path to each drone prior to takeoff. Unfortunately, due to time constraints, we were never able to hold a live demo, but we did test the system multiple times in a safe area.
         </Typography>
 
-        CAD design of gripper mechanism, mounting to drone
-
-        Required to fly over buildings instead of beeline
-
-        Meetings with department of public safety at the University to schedule a live delivery demonstration on one of the main University greens.
-
-        Other related code.
-        https://github.com/IzzyBrand/dro.ne
-
-        Most up-to-date version of the web application.
-        https://github.com/benshanahan1/dronesvr
-
         <Typography style={styles.paragraph}>
-            Lunadrop is a comprehensive drone delivery system. Immediately after a customer places an order on the website, the delivery gets packaged and strapped to one of the luna drones. The drone then flies autonomously from the central hub to the requested landing site, safely descends to drop off the package, and flies back to the central hub where it awaits the next order.
+            The full source can be found <Link external href='https://github.com/IzzyBrand/dro.ne' text='here' />. My work on the web application and server back-end can be found in its most updated form <Link external href='https://github.com/benshanahan1/dronesvr' text='here' />.
         </Typography>
 
         <Typography style={styles.component}>
-            To publicize the planned live demo and also inform others about Lunadrop, we created a brief teaser video:
+            To publicize the planned live demo and to inform about Lunadrop, we created a brief teaser video:
         </Typography>
 
         <YouTube
