@@ -2,6 +2,7 @@ import React from 'react';
 import DocumentTitle from 'react-document-title';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import ScrollToTop from './ScrollToTop';
 import Header from './Header';
 import AboutMe from './AboutMe';
 import Projects from './Projects';
@@ -75,13 +76,15 @@ class App extends React.Component {
                     <Header dimensions={dimensions} />
 
                     <BrowserRouter>
-                        <Switch>
-                            <Route
-                                exact path='/:slug'
-                                component={ProjectDescriptionView}
-                            />
-                            <Route component={HomeView} />
-                        </Switch>
+                        <ScrollToTop>
+                            <Switch>
+                                <Route
+                                    exact path='/:slug'
+                                    component={ProjectDescriptionView}
+                                />
+                                <Route component={HomeView} />
+                            </Switch>
+                        </ScrollToTop>
                     </BrowserRouter>
 
                     <Footer dimensions={dimensions} />

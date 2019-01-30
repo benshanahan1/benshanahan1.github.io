@@ -6,8 +6,8 @@ import Link from '../components/Link';
 const styles = {
     paragraph: {
         marginBottom: 30,
-    }
-}
+    },
+};
 
 export const projects = [
     {

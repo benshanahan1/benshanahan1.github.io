@@ -7,13 +7,13 @@ function Projects(props) {
     return (
         <div
             style={{
-                paddingTop: 25,
                 textAlign: 'center',
                 width: '100%',
+                paddingTop: 10,
             }}
         >
             <div style={{ paddingBottom: 25 }}>
-                <Typography variant='h4'>Projects</Typography>
+                <Typography variant='h5'>Projects</Typography>
                 <Typography>Things that I've built. Click to learn more.</Typography>
             </div>
             <div

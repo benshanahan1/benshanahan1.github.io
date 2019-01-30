@@ -10,11 +10,11 @@ function Header(props) {
         <div
             style={{
                 paddingTop: isMobile ? 5 : 25,
-                paddingBottom: 30,
+                paddingBottom: 20,
                 textAlign: 'center',
             }}
         >
-            <Typography variant={isMobile ? 'h4' : 'h2'}>
+            <Typography variant={isMobile ? 'h4' : 'h3'}>
                 Benjamin Shanahan
             </Typography>
             <Typography>

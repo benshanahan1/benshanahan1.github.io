@@ -2,13 +2,15 @@
     display: inline-block;
     max-width: 800px;
     text-align: justify;
-    padding: 10px;
 }
 
 .profilePictureWrapper {
     margin-bottom: 10px;
 }
 
-.profilePicture { 
-    border-radius: 3px;
+.profilePicture {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: solid 3px pink;
 }
