@@ -1,6 +1,7 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import Link from './Link';
+import cvPDF from '../assets/pdf/ShanahanBenjaminCV.pdf';
 
 function Header(props) {
     const { dimensions } = props;
@@ -23,7 +24,7 @@ function Header(props) {
                 <Link
                     external
                     text='cv'
-                    href='#'
+                    href={cvPDF}
                 />
                 &nbsp;//&nbsp;
                 <Link

@@ -7,7 +7,7 @@ function Footer(props) {
     return (
         <div style={{ textAlign: 'center' }}>
             <Typography>
-                Copyright &copy; {year} Benjamin Shanahan
+                Copyright 🚀 {year} Benjamin Shanahan
             </Typography>
         </div>
     );
