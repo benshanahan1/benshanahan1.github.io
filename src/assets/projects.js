@@ -11,9 +11,9 @@ import rocketLaunch from './img/ori/rocket-launch.jpg';
 
 /* Lunadrop images */
 import esc4in1 from './img/lunadrop/esc-4in1.jpg';
-import gripperCloseup from './img/lunadrop/gripper-closeup.jpg';
+// import gripperCloseup from './img/lunadrop/gripper-closeup.jpg';
 import quad from './img/lunadrop/quad.jpg';
-import quadComputer from './img/lunadrop/quad-and-computer.jpg';
+// import quadComputer from './img/lunadrop/quad-and-computer.jpg';
 import quadCloseup from './img/lunadrop/quad-closeup.jpg';
 
 /* Audiolux images */
@@ -27,6 +27,9 @@ const styles = {
     caption: {
         fontStyle: 'italic',
         marginBottom: 30,
+    },
+    image: {
+        width: '100%',
     }
 };
 
@@ -82,7 +85,7 @@ export const projects = [
 
 export const OpenRocketryInitiative = props => (
     <div>
-        <Typography style={styles.paragraph}>
+        <Typography component='div' style={styles.paragraph}>
             The Open Rocketry Initiative (ORI) is an attempt to make experimental rocketry more accessible. Implementing rocket control, automatic chute deployment, and real-time systems monitoring is a complex task, and ORI provides a codebase to give open-source users the chance to explore an implementation of a real-time control system. The CAD designs for the rocket components (e.g. tube couplers, blast cap, nose cone, tail fin) are also available online. ORI consists of three simultaneous efforts:
 
             <ul>
@@ -92,12 +95,12 @@ export const OpenRocketryInitiative = props => (
             </ul>
         </Typography>
 
-        <img src={launchpad} alt='Smart launchpad' />
+        <img src={launchpad} alt='Smart launchpad' style={styles.image} />
         <Typography style={styles.caption}>
             The smart launchpad with a motor attached, ready for testing.
         </Typography>
 
-        <img src={clearMotor} alt='Clear rocket motor' />
+        <img src={clearMotor} alt='Clear rocket motor' style={styles.image} />
         <Typography style={styles.caption}>
             A rocket motor built with clear PVC tube allows observation of the internal combustion.
         </Typography>
@@ -106,7 +109,7 @@ export const OpenRocketryInitiative = props => (
             I lead development of the rocket flight computer, lovingly nicknamed Carlson. Sporting a Raspberry Pi Zero W, Carlson is built and programmed to monitor real-time rocket orientation during flight. Carlson has a 10-DOF MPU9255 inertial monitoring unit that includes an accelerometer, gyroscope, magnetometer, and barometer. A telemetry radio enables communication with the rocket while in flight. The ORI team has successfully deployed Carlson in numerous launches and the collected orientation data permitted the development of a real-time apogee-detection algorithm.
         </Typography>
 
-        <img src={carlsonHousingCanards} alt='Carlson housing' />
+        <img src={carlsonHousingCanards} alt='Carlson housing' style={styles.image} />
         <Typography style={styles.caption}>
             Carlson, the rocket flight computer, installed in the 3D printed nose-cone of the rocket. The canards (black fins on the left) attach to the servo motors in the yellow housing.
         </Typography>
@@ -134,7 +137,7 @@ export const Lunadrop = props => (
             Lunadrop is a user-friendly autonomous drone delivery system. I worked on this project with a team initially as a DIY-type project, but it turned into a larger endeavor over the course of the semester. In addition to building a drone capable of carrying packages up to 1 kilo for ~20-25 minutes, we needed to write code that interacted with the drone's onboard flight controller, a RESTful web API, and a user-friendly web app. To  communicate with the drone in-flight, we equipped it with an LTE antenna and sim card for internet connectivity.
         </Typography>
 
-        <img src={quadCloseup} alt='Quadcopter, close-up' />
+        <img src={quadCloseup} alt='Quadcopter, close-up' style={styles.image} />
         <Typography style={styles.caption}>
             Close-up of the first lunadrop drone prototype. In addition to the flight computer's IMU, the drone has telemetry, GPS, and an LTE modem with a sim card for 3G internet connectivity.
         </Typography>
@@ -143,7 +146,7 @@ export const Lunadrop = props => (
             I developed the server back-end and the website itself. The back-end was a Python Flask web application running on Amazon AWS. The database stored information about real-time drone position (coordinates, velocity, altitude, battery voltage). Additionally, there was a separate process that coordinated multiple drones, assigning them deliveries based on their remaining battery level. The front-end needed to be mobile-friendly, and needed to poll the server to display the drones' positions in real-time on an interface similar to Google Maps.
         </Typography>
 
-        <img src={esc4in1} alt='4-in-1 ESC' />
+        <img src={esc4in1} alt='4-in-1 ESC' style={styles.image} />
         <Typography style={styles.caption}>
             The 4-in-1 electronic speed controller (ESC) module that we used on the initial lunadrop drone prototype.
         </Typography>
@@ -182,7 +185,7 @@ export const Audiolux = props => (
             Audiolux is a real-time audio-synchronized lightshow. A Teensy microcontroller is the brain of the system, calculating a fast-fourier transform in real-time to allow visualization of the different frequency components of an incoming audio stream.
         </Typography>
 
-        <img src={caseSide} alt='Case side-view' />
+        <img src={caseSide} alt='Case side-view' style={styles.image} />
         <Typography style={styles.caption}>
             Side-view of the Audiolux case. Switches allow user to turn LED-strips on and off.
         </Typography>
