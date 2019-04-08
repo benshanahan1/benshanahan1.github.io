@@ -35,6 +35,15 @@ const styles = {
 
 export const projects = [
     {
+        slug: 'vmatrix',
+        component: 'VMatrix',
+        image: vmatrix,
+        title: 'vmatrix',
+        description: 'Real-time spectrogram and audio visualizer.',
+        url: 'https://github.com/benshanahan1/vmatrix',
+        width: 800,
+        height: 325,
+    }, {
         slug: 'open-rocketry-initiative',
         component: 'OpenRocketryInitiative',
         image: rocketLaunch,
@@ -82,6 +91,14 @@ export const projects = [
     //     height: 345,
     // },
 ];
+
+export const VMatrix = props => (
+    <div>
+        <Typography component='div' style={styles.paragraph}>
+            <b>vmatrix</b> is an interactive audio visualizer, written in C, that runs on a Raspberry Pi 3.
+        </Typography>
+    </div>
+);
 
 export const OpenRocketryInitiative = props => (
     <div>
@@ -191,7 +208,11 @@ export const Audiolux = props => (
         </Typography>
 
         <Typography style={styles.paragraph}>
-            [ more to come ]
+            The original Audiolux system was built as a project for an art class. I was unsatisfied with final product since it was only able to react to the amplitude of the audio signal and not the underlying frequencies themselves. To fix this, I bought a faster microprocessor (Teensy) that could run a small real-time FFT onboard. Taking the magnitudes of the FFT outputs, binning them, and then mapping each bin as a color on an RGB LED resulted in a hypnotizing audio-synchronized lightshow. Two longer strips act as "bass visualizers": a pulse of light shoots down them whenever the lowest FFT bin passes a certain predefined threshold.
+        </Typography>
+
+        <Typography style={styles.paragraph}>
+            More pictures can be found <Link external text='here' href='https://drive.google.com/drive/u/0/folders/0B0o_ibOPs__CRDcxNHRzSUI5RW8' />.
         </Typography>
 
         <YouTube
