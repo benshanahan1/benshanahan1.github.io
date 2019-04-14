@@ -20,6 +20,10 @@ import quadCloseup from './img/lunadrop/quad-closeup.jpg';
 import boardBottom from './img/audiolux/board-bottom.jpg';
 import caseSide from './img/audiolux/case-side.jpg';
 
+/* vmatrix images */
+import vmatrixFallingDot from './img/vmatrix/vmatrixFallingDot.png';
+
+
 const styles = {
     paragraph: {
         marginBottom: 30,
@@ -37,7 +41,7 @@ export const projects = [
     {
         slug: 'vmatrix',
         component: 'VMatrix',
-        image: vmatrix,
+        image: vmatrixFallingDot,
         title: 'vmatrix',
         description: 'Real-time spectrogram and audio visualizer.',
         url: 'https://github.com/benshanahan1/vmatrix',
@@ -58,7 +62,7 @@ export const projects = [
         image: quad,
         title: 'Lunadrop',
         description: 'Automated drone-delivery service.',
-        url: 'https://www.google.com/',
+        url: 'https://github.com/benshanahan1/dronesvr',
         width: 800,
         height: 330,
     }, {
@@ -67,7 +71,7 @@ export const projects = [
         image: boardBottom,
         title: 'Audiolux',
         description: 'Real-time audio LED lightshow.',
-        url: 'https://www.google.com/',
+        url: 'https://github.com/benshanahan1/audiolux2',
         width: 800,
         height: 340,
     },
@@ -92,7 +96,7 @@ export const projects = [
     // },
 ];
 
-export const VMatrix = props => (
+export const VMatrix = (props) => (
     <div>
         <Typography component='div' style={styles.paragraph}>
             <b>vmatrix</b> is an interactive audio visualizer, written in C, that runs on a Raspberry Pi 3.
@@ -100,7 +104,7 @@ export const VMatrix = props => (
     </div>
 );
 
-export const OpenRocketryInitiative = props => (
+export const OpenRocketryInitiative = (props) => (
     <div>
         <Typography component='div' style={styles.paragraph}>
             The Open Rocketry Initiative (ORI) is an attempt to make experimental rocketry more accessible. Implementing rocket control, automatic chute deployment, and real-time systems monitoring is a complex task, and ORI provides a codebase to give open-source users the chance to explore an implementation of a real-time control system. The CAD designs for the rocket components (e.g. tube couplers, blast cap, nose cone, tail fin) are also available online. ORI consists of three simultaneous efforts:
@@ -148,7 +152,7 @@ export const OpenRocketryInitiative = props => (
     </div>
 );
 
-export const Lunadrop = props => (
+export const Lunadrop = (props) => (
     <div>
         <Typography style={styles.paragraph}>
             Lunadrop is a user-friendly autonomous drone delivery system. I worked on this project with a team initially as a DIY-type project, but it turned into a larger endeavor over the course of the semester. In addition to building a drone capable of carrying packages up to 1 kilo for ~20-25 minutes, we needed to write code that interacted with the drone's onboard flight controller, a RESTful web API, and a user-friendly web app. To  communicate with the drone in-flight, we equipped it with an LTE antenna and sim card for internet connectivity.
@@ -191,11 +195,11 @@ export const Lunadrop = props => (
     </div>
 );
 
-export const Jukebox = props => (
+export const Jukebox = (props) => (
     <Typography style={styles.paragraph}>Jukebox</Typography>
 );
 
-export const Audiolux = props => (
+export const Audiolux = (props) => (
     <div>
 
         <Typography style={styles.paragraph}>
@@ -226,14 +230,16 @@ export const Audiolux = props => (
     </div>
 );
 
-export const Semio = props => (
+export const Semio = (props) => (
     <Typography style={styles.paragraph}>Semio</Typography>
 );
 
 export function getComponent(project, dimensions) {
     switch (project.component) {
+        case 'VMatrix':
+            return <VMatrix project={project} dimensions={dimensions} />;
         case 'OpenRocketryInitiative':
-            return <OpenRocketryInitiative project={project} dimensions={dimensions}/>;
+            return <OpenRocketryInitiative project={project} dimensions={dimensions} />;
         case 'Lunadrop':
             return <Lunadrop project={project} dimensions={dimensions} />;
         case 'Jukebox':

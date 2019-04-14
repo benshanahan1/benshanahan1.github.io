@@ -5,6 +5,7 @@ import { Redirect, Link } from 'react-router-dom';
 
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import SourceCodeIcon from '@material-ui/icons/OpenInNew';
 
 import { projects, getComponent } from '../assets/projects';
 import ProjectDisplay from './ProjectDisplay';
@@ -50,8 +51,18 @@ function ProjectDescription(props) {
             <div style={{ textAlign: 'center', width: '100%' }}>
                 { !isMobile && backButton() }
 
-                <Typography variant={isMobile ? 'h5' : 'h4'}>
+                <Typography component='div' variant={isMobile ? 'h5' : 'h4'}>
                     { project.title }
+                    <div
+                        style={{
+                            display: 'inline-block',
+                            paddingLeft: 15,
+                        }}
+                    >
+                        <a href={project.url} target='_blank' rel='noopener noreferrer' title='View repo'>
+                            <SourceCodeIcon />
+                        </a>
+                    </div>
                 </Typography>
 
                 <div style={styles.headerImage}>

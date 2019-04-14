@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import '../styles/Link.css';
 
 function Link(props) {
-    const { href, text, external, children } = props;
+    const { href, text, external, children, ...rest } = props;
 
     // Specify link target
     let target = '_self';
@@ -15,6 +15,7 @@ function Link(props) {
         <a
             href={href}
             target={target}
+            { ...rest }
         >
             { children && children }
             { !children && text }
@@ -24,7 +25,7 @@ function Link(props) {
 
 Link.propTypes = {
     href: PropTypes.string.isRequired,
-    text: PropTypes.string.isRequired,
+    text: PropTypes.string,
     children: PropTypes.object,
     external: PropTypes.bool,
 }
