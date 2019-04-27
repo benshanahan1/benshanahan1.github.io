@@ -21,7 +21,7 @@ import boardBottom from './img/audiolux/board-bottom.jpg';
 import caseSide from './img/audiolux/case-side.jpg';
 
 /* vmatrix images */
-import vmatrixFallingDot from './img/vmatrix/vmatrixFallingDot.png';
+import vmatrixFallingDot from './img/vmatrix/vmatrix-falling-dot.jpg';
 
 
 const styles = {
@@ -98,8 +98,12 @@ export const projects = [
 
 export const VMatrix = (props) => (
     <div>
-        <Typography component='div' style={styles.paragraph}>
-            <b>vmatrix</b> is an interactive audio visualizer, written in C, that runs on a Raspberry Pi 3.
+        <Typography style={styles.paragraph}>
+            <b>vmatrix</b> is an interactive audio visualizer, written in C, that runs on a Raspberry Pi 3 and displays audio visualizations on an RGB LED matrix.
+        </Typography>
+
+        <Typography style={styles.paragraph}>
+            It is currently in active development. The code is <Link external href='https://github.com/benshanahan1/vmatrix' text='available on GitHub' /> and here are some <Link external href='https://drive.google.com/drive/u/1/folders/1-5Ad2uvUaU7FSPwE7hDFrsoWIoqni-wP' text='pictures and videos' /> of it in action!
         </Typography>
     </div>
 );
@@ -212,7 +216,15 @@ export const Audiolux = (props) => (
         </Typography>
 
         <Typography style={styles.paragraph}>
-            The original Audiolux system was built as a project for an art class. I was unsatisfied with final product since it was only able to react to the amplitude of the audio signal and not the underlying frequencies themselves. To fix this, I bought a faster microprocessor (Teensy) that could run a small real-time FFT onboard. Taking the magnitudes of the FFT outputs, binning them, and then mapping each bin as a color on an RGB LED resulted in a hypnotizing audio-synchronized lightshow. Two longer strips act as "bass visualizers": a pulse of light shoots down them whenever the lowest FFT bin passes a certain predefined threshold.
+            The original Audiolux system was built as a project for an art class. For the upgraded version, I bought a faster microprocessor (Teensy) that could run a small real-time FFT onboard. This allows for visualization of the frequency spectrum of the incoming audio instead of just amplitude.
+        </Typography>
+        
+        <Typography style={styles.paragraph}>
+            Audiolux reads incoming audio as an analog input on the microprocess, then runs a real-time 1024 point FFT algorithm on the audio. It bins the FFT output logarithmically into 16 bins and assigns each a color based on its number. The result is a hypnotizing audio-synchronized lightshow.
+        </Typography>
+        
+        <Typography style={styles.paragraph}>
+            Two longer strips act as "bass visualizers": a pulse of light shoots down them whenever the lowest FFT bin passes a certain predefined threshold.
         </Typography>
 
         <Typography style={styles.paragraph}>

@@ -1,7 +1,7 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import Link from './Link';
-import me from '../assets/img/me.png';
+import me from '../assets/img/me.jpg';
 import '../styles/AboutMe.css';
 
 function AboutMe(props) {
