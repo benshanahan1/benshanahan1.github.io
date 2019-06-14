@@ -1,5 +1,6 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
+import Link from './Link';
 
 
 function Footer() {
@@ -14,7 +15,10 @@ function Footer() {
         {' '}
         {year}
         {' '}
-        Benjamin Shanahan
+        Benjamin Shanahan.
+        {' '}
+        <Link external href="https://github.com/benshanahan1/benshanahan1.github.io" text="View source" />
+        .
       </Typography>
     </div>
   );
