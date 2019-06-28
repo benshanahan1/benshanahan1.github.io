@@ -26,3 +26,5 @@ To deploy the site to GitHub pages:
 ```bash
 npm run deploy
 ```
+
+If the site no longer shows up at the custom domain, you might need to go into the repo settings and update the custom domain. For some reason, deploying to GitHub pages seems to reset this field every time.
