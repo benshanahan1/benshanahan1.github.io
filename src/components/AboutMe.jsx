@@ -2,7 +2,7 @@ import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import Link from './Link';
 import me from '../assets/img/me.jpg';
-import '../styles/AboutMe.css';
+import './AboutMe.css';
 
 function AboutMe() {
   return (

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import ProjectDisplay from './ProjectDisplay';
-import { projects } from '../assets/projects';
+import { projects } from './projects';
 
 
 function Projects(props) {

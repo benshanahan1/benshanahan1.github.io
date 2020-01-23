@@ -1,0 +1,12 @@
+.paragraph {
+    margin-bottom: 30px !important;
+}
+
+.caption {
+    font-style: italic !important;
+    margin-bottom: 30px !important;
+}
+
+.image {
+    width: 100% !important;
+}

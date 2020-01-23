@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import '../styles/Link.css';
+import './Link.css';
 
 
 function Link(props) {

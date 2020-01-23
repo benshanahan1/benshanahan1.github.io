@@ -1,33 +1,36 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
+import clsx from 'clsx';
 import DocumentTitle from 'react-document-title';
 import { Redirect, Link } from 'react-router-dom';
-
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import SourceCodeIcon from '@material-ui/icons/OpenInNew';
-
-import { projects, getComponent } from '../assets/projects';
+import { projects, getComponent } from './projects';
 import ProjectDisplay from './ProjectDisplay';
+import './ProjectDescription.css';
 
 
-/* NOTE: Modify project descriptions in 'src/assets/projects.js'. */
+function BackButton(props) {
+  const { isFixed } = props;
+  return (
+    <Button
+      className={clsx(isFixed && 'back-button', !isFixed && 'back-button-mobile')}
+      component={Link}
+      to="/"
+    >
+      Back to home
+    </Button>
+  );
+}
 
+BackButton.propTypes = {
+  isFixed: PropTypes.bool,
+};
 
-const styles = {
-  headerImage: {
-    marginTop: 15,
-  },
-  backButton: {
-    position: 'absolute',
-    top: 10,
-    left: 10,
-  },
-  backButtonMobile: {
-    textAlign: 'center',
-    marginBottom: 30,
-  },
+BackButton.defaultProps = {
+  isFixed: false,
 };
 
 
@@ -35,16 +38,7 @@ function ProjectDescription(props) {
   const { dimensions, match } = props;
   const { isMobile } = dimensions;
   const { slug } = match.params;
-  const project = _.find(projects,
-    obj => slug === obj.slug);
-
-  const backButton = () => (
-    <div style={isMobile ? styles.backButtonMobile : styles.backButton}>
-      <Button component={Link} to="/">
-                Back to home
-      </Button>
-    </div>
-  );
+  const project = _.find(projects, obj => slug === obj.slug);
 
   if (!project) {
     return <Redirect to="/" />;
@@ -52,24 +46,17 @@ function ProjectDescription(props) {
 
   return (
     <DocumentTitle title={project.title}>
-      <div style={{ textAlign: 'center', width: '100%' }}>
-        { !isMobile && backButton() }
-
+      <div className="project-container">
+        { !isMobile && <BackButton isFixed={!isMobile} /> }
         <Typography component="div" variant={isMobile ? 'h5' : 'h4'}>
           { project.title }
-          <div
-            style={{
-              display: 'inline-block',
-              paddingLeft: 15,
-            }}
-          >
+          <div className="project-source-icon">
             <a href={project.url} target="_blank" rel="noopener noreferrer" title="View repo">
               <SourceCodeIcon />
             </a>
           </div>
         </Typography>
-
-        <div style={styles.headerImage}>
+        <div className="project-header-image">
           <ProjectDisplay
             noLink
             noTitle
@@ -77,20 +64,10 @@ function ProjectDescription(props) {
             dimensions={dimensions}
           />
         </div>
-
-        <div
-          style={{
-            textAlign: 'justify',
-            display: 'inline-block',
-            maxWidth: 800,
-            marginBottom: 30,
-            padding: isMobile ? 10 : 0,
-          }}
-        >
+        <div className={clsx('project-component-container', isMobile && 'project-component-padding')}>
           { getComponent(project, dimensions) }
         </div>
-
-        { isMobile && backButton() }
+        <BackButton />
       </div>
     </DocumentTitle>
   );
