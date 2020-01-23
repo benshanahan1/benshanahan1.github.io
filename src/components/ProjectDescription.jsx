@@ -6,6 +6,7 @@ import DocumentTitle from 'react-document-title';
 import { Redirect, Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import Tooltip from '@material-ui/core/Tooltip';
 import SourceCodeIcon from '@material-ui/icons/OpenInNew';
 import { projects, getComponent } from './projects';
 import ProjectDisplay from './ProjectDisplay';
@@ -51,9 +52,11 @@ function ProjectDescription(props) {
         <Typography component="div" variant={isMobile ? 'h5' : 'h4'}>
           { project.title }
           <div className="project-source-icon">
-            <a href={project.url} target="_blank" rel="noopener noreferrer" title="View repo">
-              <SourceCodeIcon />
-            </a>
+            <Tooltip title="View project repo" placement="right">
+              <a href={project.url} target="_blank" rel="noopener noreferrer">
+                <SourceCodeIcon />
+              </a>
+            </Tooltip>
           </div>
         </Typography>
         <div className="project-header-image">
