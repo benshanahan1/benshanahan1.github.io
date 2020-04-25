@@ -1,15 +1,15 @@
-import React from 'react';
-import Typography from '@material-ui/core/Typography';
-import Link from './Link';
-import me from '../assets/img/me.jpg';
-import './AboutMe.css';
+import React from "react";
+import Typography from "@material-ui/core/Typography";
+import Link from "./Link";
+import me from "../assets/img/me.jpg";
+import "./AboutMe.css";
 
 function AboutMe() {
   return (
     <div
       style={{
-        width: '100%',
-        textAlign: 'center',
+        width: "100%",
+        textAlign: "center",
       }}
     >
       <div className="profilePictureWrapper">
@@ -18,15 +18,15 @@ function AboutMe() {
       <div className="aboutText">
         <div>
           <Typography>
-            <b>Hi, I&apos;m Benjamin!</b>
-            {' '}
-            I work as a full-stack software developer at
-            {' '}
+            <b>Hi, I&apos;m Benjamin!</b> I work as a full-stack software
+            developer at{" "}
             <Link external text="NeuroPace" href="https://www.neuropace.com/" />
-            , a medical device company in Mountain View, CA that manufactures a
-            {' '}
-            <Link external text="responsive neurostimulation system" href="https://www.neuropace.com/the-rns-system/" />
-            {' '}
+            , a medical device company in Mountain View, CA that manufactures a{" "}
+            <Link
+              external
+              text="responsive neurostimulation system"
+              href="https://www.neuropace.com/the-rns-system/"
+            />{" "}
             for treating epilepsy in patients unresponsive to anti-seizure
             medication. I build things in my free time.
           </Typography>

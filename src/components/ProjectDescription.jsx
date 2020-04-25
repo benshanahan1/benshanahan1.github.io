@@ -29,18 +29,18 @@ function BackButton(props) {
 }
 
 BackButton.propTypes = {
-  isFixed: PropTypes.bool
+  isFixed: PropTypes.bool,
 };
 
 BackButton.defaultProps = {
-  isFixed: false
+  isFixed: false,
 };
 
 function ProjectDescription(props) {
   const { dimensions, match } = props;
   const { isMobile } = dimensions;
   const { slug } = match.params;
-  const project = _.find(projects, obj => slug === obj.slug);
+  const project = _.find(projects, (obj) => slug === obj.slug);
 
   if (!project) {
     return <Redirect to="/" />;
@@ -86,9 +86,9 @@ ProjectDescription.propTypes = {
   dimensions: PropTypes.shape({
     width: PropTypes.number.isRequired,
     height: PropTypes.number.isRequired,
-    isMobile: PropTypes.bool.isRequired
+    isMobile: PropTypes.bool.isRequired,
   }).isRequired,
-  match: PropTypes.object.isRequired // eslint-disable-line
+  match: PropTypes.object.isRequired, // eslint-disable-line
 };
 
 export default ProjectDescription;

@@ -1,17 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import '../styles/SocialIcon.css';  // eslint-disable-line
-
+import React from "react";
+import PropTypes from "prop-types";
+import "../styles/SocialIcon.css"; // eslint-disable-line
 
 function SocialIcon(props) {
   const { imgSrc, altText } = props;
   return (
     <div className="socialIconWrapper">
-      <img
-        className="socialIconImage"
-        src={imgSrc}
-        alt={altText}
-      />
+      <img className="socialIconImage" src={imgSrc} alt={altText} />
     </div>
   );
 }
@@ -22,8 +17,7 @@ SocialIcon.propTypes = {
 };
 
 SocialIcon.defaultProps = {
-  altText: '',
+  altText: "",
 };
-
 
 export default SocialIcon;

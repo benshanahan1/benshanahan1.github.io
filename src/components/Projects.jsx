@@ -1,9 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Typography from '@material-ui/core/Typography';
-import ProjectDisplay from './ProjectDisplay';
-import { projects } from './projects';
-
+import React from "react";
+import PropTypes from "prop-types";
+import Typography from "@material-ui/core/Typography";
+import ProjectDisplay from "./ProjectDisplay";
+import { projects } from "./projects";
 
 function Projects(props) {
   const { dimensions } = props;
@@ -11,21 +10,23 @@ function Projects(props) {
   return (
     <div
       style={{
-        textAlign: 'center',
-        width: '100%',
+        textAlign: "center",
+        width: "100%",
         paddingTop: 10,
       }}
     >
       <div style={{ paddingBottom: 25 }}>
         <Typography variant="h5">Projects</Typography>
-        <Typography>Things that I&apos;ve built. Click to learn more.</Typography>
+        <Typography>
+          Things that I&apos;ve built. Click to learn more.
+        </Typography>
       </div>
       <div
         style={{
-          textAlign: 'center',
+          textAlign: "center",
         }}
       >
-        { projects.map(project => (
+        {projects.map((project) => (
           <ProjectDisplay
             key={project.title}
             project={project}
@@ -44,6 +45,5 @@ Projects.propTypes = {
     isMobile: PropTypes.bool.isRequired,
   }).isRequired,
 };
-
 
 export default Projects;

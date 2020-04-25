@@ -1,24 +1,24 @@
 a {
-    text-decoration: none;
-    color: #ff00c8;
+  text-decoration: none;
+  color: #ff00c8;
 }
 
 a:link {
-    text-decoration: none;
-    color: #ff00c8;
+  text-decoration: none;
+  color: #ff00c8;
 }
 
 a:visited {
-    text-decoration: none;
-    color: #ff00c8;
+  text-decoration: none;
+  color: #ff00c8;
 }
 
 a:hover {
-    text-decoration: underline;
-    color: #ff00c8;
+  text-decoration: underline;
+  color: #ff00c8;
 }
 
 a:active {
-    text-decoration: underline;
-    color: #ff00c8;
+  text-decoration: underline;
+  color: #ff00c8;
 }

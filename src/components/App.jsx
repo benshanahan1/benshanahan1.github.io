@@ -14,11 +14,11 @@ const theme = createMuiTheme({
     palette: {},
     fontFamily: '"Crimson Text", serif',
     // fontFamily: '"Open Sans", sans-serif',
-    fontSize: 18
+    fontSize: 18,
     // fontWeightLight: 300,
     // fontWeightRegular: 400,
     // fontWeightMedium: 500,
-  }
+  },
 });
 
 class App extends React.Component {
@@ -26,7 +26,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       width: window.innerWidth, // eslint-disable-line
-      height: window.innerHeight // eslint-disable-line
+      height: window.innerHeight, // eslint-disable-line
     };
 
     /* Bind methods to `this`. */
@@ -50,7 +50,7 @@ class App extends React.Component {
   updateDimensions() {
     this.setState({
       width: window.innerWidth, // eslint-disable-line
-      height: window.innerHeight // eslint-disable-line
+      height: window.innerHeight, // eslint-disable-line
     });
   }
 
@@ -59,14 +59,14 @@ class App extends React.Component {
     const isMobile = width < 700;
     const dimensions = { width, height, isMobile };
 
-    const HomeView = props => (
+    const HomeView = (props) => (
       <div>
         <AboutMe dimensions={dimensions} {...props} />
         <Projects dimensions={dimensions} {...props} />
       </div>
     );
 
-    const ProjectDescriptionView = props => (
+    const ProjectDescriptionView = (props) => (
       <ProjectDescription dimensions={dimensions} {...props} />
     );
 
