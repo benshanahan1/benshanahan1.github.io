@@ -3,12 +3,24 @@ import VMatrix from "./VMatrix";
 import OpenRocketryInitiative from "./OpenRocketryInitiative";
 import Lunadrop from "./Lunadrop";
 import Audiolux from "./Audiolux";
+import TreeHouse from "./TreeHouse";
 import vmatrixFallingDot from "../../assets/img/vmatrix/vmatrix-falling-dot.jpg";
 import rocketLaunch from "../../assets/img/ori/rocket-launch.jpg";
 import quad from "../../assets/img/lunadrop/quad.jpg";
 import boardBottom from "../../assets/img/audiolux/board-bottom.jpg";
+import fullTreehouse from "../../assets/img/treehouse/0_full_cover.jpg";
 
 export const projects = [
+  {
+    slug: "treehouse",
+    component: "TreeHouse",
+    image: fullTreehouse,
+    title: "Tree House",
+    description: "DIY modern-inspired treehouse.",
+    url: null,
+    width: 800,
+    height: 325,
+  },
   {
     slug: "vmatrix",
     component: "VMatrix",
@@ -63,6 +75,8 @@ export function getComponent(project, dimensions) {
       return <Lunadrop project={project} dimensions={dimensions} />;
     case "Audiolux":
       return <Audiolux project={project} dimensions={dimensions} />;
+    case "TreeHouse":
+      return <TreeHouse project={project} dimensions={dimensions} />;
     default:
       return <div />;
   }
