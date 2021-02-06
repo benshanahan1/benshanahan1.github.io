@@ -18,8 +18,13 @@ function AboutMe() {
       <div className="aboutText">
         <div>
           <Typography>
-            <b>Hi, I&apos;m Benjamin!</b> I work as a full-stack software
-            developer at{" "}
+            <b>Hi, I&apos;m Benjamin!</b> I&apos;m a software engineer working
+            at{" "}
+            <Link external text="SpaceX" href="https://www.spacex.com">
+              SpaceX
+            </Link>
+            , an aerospace company focused on revolutionizing space
+            transportation and making life interplanetary. Previously, I was at{" "}
             <Link external text="NeuroPace" href="https://www.neuropace.com/" />
             , a medical device company in Mountain View, CA that manufactures a{" "}
             <Link
