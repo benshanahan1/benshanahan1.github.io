@@ -4,6 +4,14 @@ Source for my portfolio website.
 This page is hosted from GitHub pages: https://benshanahan1.github.io
 
 ## Install
+Current requires:
+```bash
+$ npm --version
+7.5.1
+$ node --version
+v15.8.0
+```
+
 Clone the repository and run:
 ```bash
 npm install
