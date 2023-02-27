@@ -1,20 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-155350055-1"></script>
+    <!-- Cronitor RUM -->
+    <script async src="https://rum.cronitor.io/script.js"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'UA-155350055-1');
+      window.cronitor =
+        window.cronitor ||
+        function() {
+          (window.cronitor.q = window.cronitor.q || []).push(arguments);
+        };
+      cronitor("config", {
+        clientKey: "6024e25f48b71ecffe873243fb164980",
+        debug: false,
+      });
     </script>
-    <meta charset="utf-8">
-    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#000000">
+    <meta charset="utf-8" />
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
     <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"> -->
-     <link href="https://fonts.googleapis.com/css?family=Crimson+Text|Open+Sans" rel="stylesheet"> 
+    <link
+      href="https://fonts.googleapis.com/css?family=Crimson+Text|Open+Sans"
+      rel="stylesheet"
+    />
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
