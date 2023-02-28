@@ -24,7 +24,16 @@ function AboutMe() {
               SpaceX
             </Link>
             , an aerospace company focused on revolutionizing space
-            transportation and making life interplanetary. Previously, I was at{" "}
+            transportation and making life interplanetary.
+            {' '}I&apos;ve primarily worked on{' '}
+            <Link external text="home grown manufacturing software and execution systems" href="https://stackoverflow.blog/2021/05/13/building-the-software-that-helps-build-spacex/">
+              home grown manufacturing software and execution systems
+            </Link>
+            {' '}and briefly on the massive telemetry system that collects and ingests data from rocket launches, engine test beds, and Starlink satellites. 
+          </Typography>
+          <br />
+          <Typography>
+            Previously, I worked at{" "}
             <Link external text="NeuroPace" href="https://www.neuropace.com/" />
             , a medical device company in Mountain View, CA that manufactures a{" "}
             <Link
@@ -33,7 +42,11 @@ function AboutMe() {
               href="https://www.neuropace.com/the-rns-system/"
             />{" "}
             for treating epilepsy in patients unresponsive to anti-seizure
-            medication. I build things in my free time.
+            medication. Prior to industry, I worked for a couple of years in the{' '}
+            <Link external text="BrainGate brain-computer interface lab" href="https://www.braingate.org/">
+            BrainGate brain-computer interface lab
+            </Link>
+            {' '}at Brown University.
           </Typography>
         </div>
       </div>

@@ -18,7 +18,7 @@ function Projects(props) {
       <div style={{ paddingBottom: 25 }}>
         <Typography variant="h5">Projects</Typography>
         <Typography>
-          Things that I&apos;ve built. Click to learn more.
+          I like to build things in my free time. Click to learn more.
         </Typography>
       </div>
       <div
