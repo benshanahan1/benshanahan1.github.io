@@ -29,6 +29,12 @@ function Header(props) {
           text="linkedin"
           href="https://www.linkedin.com/in/benshanahan/"
         />
+        &nbsp;//&nbsp;
+        <Link
+          external
+          text="x"
+          href="https://twitter.com/ben__shanahan"
+        />
       </Typography>
     </div>
   );

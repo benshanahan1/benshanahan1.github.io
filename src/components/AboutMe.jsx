@@ -18,14 +18,16 @@ function AboutMe() {
       <div className="aboutText">
         <div>
           <Typography>
-            <b>Hi, I&apos;m Benjamin!</b> I&apos;m a software engineer working
-            at{" "}
-            <Link external text="SpaceX" href="https://www.spacex.com">
-              SpaceX
-            </Link>
-            , an aerospace company focused on revolutionizing space
-            transportation and making life interplanetary.
-            {' '}I&apos;ve primarily worked on{' '}
+            <b>Hi, I'm Benjamin! </b>
+            Back in March 2023, I co-founded <Link external text="Senra Systems" href="https://www.senrasystems.us">
+              Senra Systems
+            </Link> with <Link external text="Jordan Black" href="https://www.linkedin.com/in/jordan-black-138419a1/">Jordan Black</Link>.
+            As former <Link external text="SpaceX" href="https://www.spacex.com">SpaceX</Link> engineers, we both set out to build the world's first software-powered <Link external text="wire harness" href="https://en.wikipedia.org/wiki/Cable_harness">wire harness</Link> manufacturing company,
+            aiming to solve the very real problems that we experienced first-hand at the rocket factory. Torrance News did a segment on us, <Link external text="Torrance News segment" href="https://www.youtube.com/watch?v=JnJU7T5Ofq8">check it out here</Link>.
+          </Typography>
+          <br />
+          <Typography>
+            In my previous life as a SpaceX software engineer, I primarily working on{' '}
             <Link external text="home grown manufacturing software and execution systems" href="https://stackoverflow.blog/2021/05/13/building-the-software-that-helps-build-spacex/">
               home grown manufacturing software and execution systems
             </Link>
@@ -33,7 +35,7 @@ function AboutMe() {
           </Typography>
           <br />
           <Typography>
-            Previously, I worked at{" "}
+            Before Aerospace, I worked at{" "}
             <Link external text="NeuroPace" href="https://www.neuropace.com/" />
             , a medical device company in Mountain View, CA that manufactures a{" "}
             <Link
@@ -42,11 +44,11 @@ function AboutMe() {
               href="https://www.neuropace.com/the-rns-system/"
             />{" "}
             for treating epilepsy in patients unresponsive to anti-seizure
-            medication. Prior to industry, I worked for a couple of years in the{' '}
+            medication. I also worked for several years in the{' '}
             <Link external text="BrainGate brain-computer interface lab" href="https://www.braingate.org/">
             BrainGate brain-computer interface lab
             </Link>
-            {' '}at Brown University.
+            {' '}at my Alma Mater, Brown University.
           </Typography>
         </div>
       </div>
