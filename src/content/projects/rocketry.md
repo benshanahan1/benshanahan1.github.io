@@ -19,7 +19,7 @@ specs:
 
 ![Launch day](/img/ori/rocket-launch.jpg "Launch day")
 
-Implementing rocket control, automatic chute deployment, and real-time systems monitoring is a complex task, and ORI provides a codebase so open-source users can explore a real implementation of a real-time control system. The CAD designs for the rocket components (tube couplers, blast cap, nose cone, tail fins) are also available online. ORI had three parallel efforts:
+We wanted to make experimental rocketry easier to get into, so we shared the code and CAD for our flight computer, smart launchpad and rocket components. ORI had three parallel efforts:
 
 - **Smart launchpad.** Trigger a launch over WiFi and measure motor thrust curves ([repo](https://github.com/openrocketryinitiative/launchpad))
 - **Motors.** Optimize rocket motor thrust curves by adjusting fuel mixtures ([repo](https://github.com/openrocketryinitiative/motors))

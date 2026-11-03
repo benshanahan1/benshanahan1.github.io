@@ -2,7 +2,7 @@
 title: "Treehouse"
 pn: "BS-2X6-20"
 year: "2020"
-lede: "My brother, cousins and I built a treehouse! I've always wanted to build one, and it was a perfect two-month project for four people over the pandemic summer."
+lede: "I'd always wanted to build a treehouse. In the summer of 2020, my brother, cousins and I finally did: four people, two months, one tree."
 order: 2
 summary: "A treehouse built about ten feet up a single trunk with my brother and cousins."
 bullets:

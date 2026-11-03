@@ -2,7 +2,7 @@
 title: "Audiolux"
 pn: "BS-FFT-16"
 year: "2016"
-lede: "A real-time, audio-synchronized light show. A Teensy runs a fast Fourier transform on incoming audio and maps each frequency band to the LEDs."
+lede: "An LED light show that reacts to music in real time. A Teensy splits incoming audio into frequency bands and maps each one to the lights."
 order: 6
 summary: "A real-time, audio-synchronized light show."
 bullets:

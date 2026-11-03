@@ -19,7 +19,7 @@ specs:
 
 ![The Lunadrop quadcopter](/img/lunadrop/quad.jpg "The Lunadrop quadcopter")
 
-I worked on this with a team, and it started as a DIY project before turning into a much bigger effort over the semester. On top of building a drone that could carry packages up to 1 kg for 20 to 25 minutes, we had to write code that talked to the drone's onboard flight controller, a REST API, and an easy-to-use web app. To talk to the drone in flight, we gave it an LTE antenna and a SIM card for internet access.
+What started as a DIY project grew into a semester-long team effort to build an autonomous delivery drone. On top of building a drone that could carry packages up to 1 kg for 20 to 25 minutes, we had to write code that talked to the drone's onboard flight controller, a REST API, and an easy-to-use web app. To talk to the drone in flight, we gave it an LTE antenna and a SIM card for internet access.
 
 ![Close-up of the first prototype. Besides the flight computer's IMU, it has telemetry, GPS, and an LTE modem with a SIM card for 3G internet.](/img/lunadrop/quad-closeup.jpg "Close-up of the first prototype. Besides the flight computer's IMU, it has telemetry, GPS, and an LTE modem with a SIM card for 3G internet.")
 

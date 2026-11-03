@@ -8,7 +8,7 @@ const projects = (await getCollection("projects", (p) => p.data.listed)).sort((a
   <section class="page-head reveal is-in">
     <p class="mono" style="color:var(--ink-3);margin:0">Sheet 2 of 2 &nbsp; Bill of materials</p>
     <h1>Projects</h1>
-    <p>Things I build in my spare time, from small apps for my own life to older hardware projects: drones, rockets, LEDs and a treehouse.</p>
+    <p>Small apps I wanted to use, hardware I wanted to understand, and a treehouse I'd always wanted to build.</p>
   </section>
   {projects.map((p, i) => (
     <ProjectCard project={p} index={i + 1}>
