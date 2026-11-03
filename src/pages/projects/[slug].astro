@@ -1,0 +1,40 @@
+---
+import { getCollection, render } from "astro:content";
+import Sheet from "../../layouts/Sheet.astro";
+
+export async function getStaticPaths() {
+  const all = (await getCollection("projects")).sort((a, b) => a.data.order - b.data.order);
+  const listed = all.filter((p) => p.data.listed);
+  return all.map((project) => {
+    // prev/next loops through the listed projects; an unlisted page joins at the start
+    const k = Math.max(0, listed.indexOf(project));
+    const prev = listed[(k - 1 + listed.length) % listed.length];
+    const next = listed[(k + 1) % listed.length];
+    return { params: { slug: project.id }, props: { project, prev, next } };
+  });
+}
+
+const { project, prev, next } = Astro.props;
+const p = project.data;
+const { Content } = await render(project);
+const rows = [["Year", p.year], ...p.specs];
+---
+<Sheet title={p.title} description={p.lede} sheet="2" dwg={p.pn}>
+  <section class="doc-head reveal is-in">
+    <nav class="crumb mono" aria-label="Breadcrumb"><a href="/projects/">Projects</a><span>{p.pn}</span></nav>
+    <h1>{p.title}</h1>
+    <p class="lede">{p.lede}</p>
+  </section>
+  <div class="doc">
+    <article class="prose"><Content /></article>
+    <aside class="aside">
+      <table class="table"><tbody>
+        {rows.map(([k, v]) => <tr><td>{k}</td><td set:html={v} /></tr>)}
+      </tbody></table>
+    </aside>
+  </div>
+  <nav class="pager mono" aria-label="More projects">
+    <a href={`/projects/${prev.id}/`}><small>Previous</small><b>{prev.data.title}</b></a>
+    <a href={`/projects/${next.id}/`}><small>Next</small><b>{next.data.title}</b></a>
+  </nav>
+</Sheet>

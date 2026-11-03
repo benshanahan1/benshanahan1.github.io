@@ -1,0 +1,18 @@
+---
+import { NAME, ROLE, SENRA, LINKS } from "../data/site.js";
+import { CURRENT_REV } from "../data/revs.js";
+const { sheet, dwg } = Astro.props;
+const ext = (h) => h.startsWith("http") || h.endsWith(".pdf"); // opens in a new tab
+---
+<footer class="titleblock mono reveal">
+  <div class="tb tb--name"><small>Name</small><b>{NAME}</b><em>{ROLE}</em></div>
+  <div class="tb tb--co"><small>Company</small><a class="ext" href={SENRA} target="_blank" rel="noreferrer"><b>Senra</b></a></div>
+  <div class="tb"><small>Dwg no.</small><b>{dwg}</b></div>
+  <div class="tb"><small>Rev</small><b>{CURRENT_REV}</b></div>
+  <div class="tb"><small>Sheet</small><b>{sheet} of 2</b></div>
+  <nav class="tb tb--links" aria-label="Contact">
+    {LINKS.map(([label, href]) => (
+      <a class="ext" href={href} target={ext(href) ? "_blank" : undefined} rel={ext(href) ? "noreferrer" : undefined}>{label}</a>
+    ))}
+  </nav>
+</footer>

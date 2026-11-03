@@ -1,0 +1,23 @@
+---
+import { getCollection } from "astro:content";
+import Sheet from "../../layouts/Sheet.astro";
+import ProjectCard from "../../components/ProjectCard.astro";
+const projects = (await getCollection("projects", (p) => p.data.listed)).sort((a, b) => a.data.order - b.data.order);
+---
+<Sheet title="Projects" description="Side projects by Benjamin Shanahan." sheet="2" dwg="BS-002">
+  <section class="page-head reveal is-in">
+    <p class="mono" style="color:var(--ink-3);margin:0">Sheet 2 of 2 &nbsp; Bill of materials</p>
+    <h1>Projects</h1>
+    <p>Things I build in my spare time, from small apps for my own life to older hardware projects: drones, rockets, LEDs and a treehouse.</p>
+  </section>
+  {projects.map((p, i) => (
+    <ProjectCard project={p} index={i + 1}>
+      {p.id === "jot" && (
+        <Fragment>
+          <img class="shot only-light" src="/img/jot-dark.png" alt="Jot editor screenshot" width="1600" height="1244" loading="lazy" />
+          <img class="shot only-dark" src="/img/jot-light.png" alt="" width="1600" height="1244" loading="lazy" />
+        </Fragment>
+      )}
+    </ProjectCard>
+  ))}
+</Sheet>

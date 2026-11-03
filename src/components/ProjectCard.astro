@@ -1,0 +1,32 @@
+---
+const { project, index } = Astro.props;
+const p = project.data;
+const href = `/projects/${project.id}/`;
+---
+<article class="part reveal">
+  <div class="part__no">{String(index).padStart(2, "0")}</div>
+  <div class="part__body">
+    <div class="cells mono">
+      <div><small>P/N</small><span>{p.pn}</span></div>
+      <div><small>Year</small><span>{p.year}</span></div>
+    </div>
+    <h2><a href={href}>{p.title}</a></h2>
+    <p>{p.summary}</p>
+    {p.bullets.length > 0 && <ul>{p.bullets.map((b) => <li>{b}</li>)}</ul>}
+    <div class="part__links mono">
+      <a href={href}>Read more</a>
+      {p.links.map(([label, url]) => <a class="ext" href={url} target="_blank" rel="noreferrer">{label}</a>)}
+    </div>
+  </div>
+  {p.image ? (
+    <a class="part__view part__view--photo" href={href} aria-label={p.title}>
+      <img src={p.image} alt={p.imageAlt} loading="lazy" />
+      <span class="vlabel mono">View A</span>
+    </a>
+  ) : (
+    <a class="part__view" href={href} aria-label={p.title}>
+      <slot />
+      <span class="vlabel mono">View A</span>
+    </a>
+  )}
+</article>

@@ -1,0 +1,255 @@
+% Curriculum Vitae
+%
+% Modified from Original CV LaTeX file by David Brandman.
+%
+% 1 Oct 2022, Benjamin Shanahan. Updated Nov 2026.
+% Build: npm run cv (writes public/cv.pdf for benshanahan.dev/cv.pdf)
+
+
+\documentclass{FormatCV}
+
+%% Begin the document
+  
+\begin{document}
+
+% This gets rid of the first number on first page:
+\clearpage
+\thispagestyle{empty}
+
+
+ % ------------------------------------------------
+ % ****** Header *********
+ % ------------------------------------------------
+
+\printHeader
+{Benjamin Shanahan}
+{Class of 2017, Sc. B. in Neuroscience with Honors, Magna Cum Laude, Brown University \\
+Class of 2013, Boston Latin School \\
+{\it Curriculum Vitae} \hfill \monthyeardate\today}
+
+ % ------------------------------------------------
+ % ****** Contact Information *********
+ % ------------------------------------------------
+
+\begin{newSection}{Contact Information}
+
+\twoBold{Email}{benshanahan1 (at) gmail}
+\twoBold{Web}{\href{https://benshanahan.dev}{benshanahan.dev} \emph{(portfolio)}}
+\twoBold{LinkedIn}{\href{https://www.linkedin.com/in/benshanahan/}{linkedin.com/in/benshanahan}}
+
+\end{newSection}
+
+% -------------------------------------------------
+% ******* Technical Skills *********
+% -------------------------------------------------
+
+\begin{newSection}{Technical Skills}
+
+\two{Languages}{C\#, Python, JavaScript, TypeScript, SQL, Bash}
+\two{Web}{NestJS, ReactJS, Angular, Flask}
+\two{Databases}{PostgreSQL, MSSQL, Oracle}
+\two{Misc}{Docker, Helm, Kubernetes}
+
+\end{newSection}
+
+ % ------------------------------------------------
+ % ****** Work Experience *********
+ % ------------------------------------------------
+
+\begin{newSection}{Work Experience}
+
+\fourNoIta{2026 - Present}
+{Co-Founder, AI \& Robotics}
+{Senra Systems, Cypress, CA}
+{Lead Senra's robotics program, applying AI and robotics to precision wire harness assembly: vision for inspection, robots for the hardest assembly steps, and agents across our software. Building the team across production robotics, robot learning, and perception.}
+
+\fourNoIta{2023 - 2026}
+{Co-Founder, CTO}
+{Senra Systems, Torrance, CA}
+{Co-founded Senra with Jordan Black to rethink how wire harnesses are designed and built. Built Amp, the platform that runs our factory: engineers turn customer drawings into work instructions, technicians build from digital instructions at their stations, and every harness ends up with a full build and inspection record. \href{https://www.senrasystems.us}{senrasystems.us}}
+
+\fourNoIta{2022 - 2023}
+{Software Engineer II}
+{SpaceX, Hawthorne, CA}
+{Telemetry system that ingests high-rate continuous data from engine tests, launches, and satellites, plus Warpdrive, SpaceX's in-house ERP and execution system. Worked across engineering, product, and project management: met with factory stakeholders, scoped requirements, set timelines, and onboarded new engineers on software supporting Falcon 9, Starlink, and Starship.}
+
+\fourNoIta{2020 - 2022}
+{Software Engineer}
+{SpaceX, Hawthorne, CA}
+{Joined the Warpdrive team. From mid-2021 to mid-2022, on the Manufacturing Execution System team in the Starlink factory, building user terminals and Wi-Fi routers at rate.}
+
+\fourNoIta{2018 - 2021}
+{Research Software Engineer}
+{NeuroPace, Mountain View, CA}
+{Full-stack design and development of internal tools for research and field teams, focused on analysis and interactive visualization of large neural data sets from an implanted neurostimulator that treats epilepsy. Linux server and Oracle database administration.}
+
+\fourNoIta{2017 - 2018}
+{Computer Programmer}
+{BrainGate, Brown University, Providence, RI}
+{Co-led the C implementation of the BrainGate calibration and decoder pipeline on an embedded Linux system, and reverse-engineered the interface to the neural recording software. Debugged FPGA signal processing code in Vivado HLS. Led the real-time monitoring system for the BrainGate research cart (Python, websockets, MongoDB). Supervised a high school intern building a calibration game. \emph{Supervisors: Dr. John Simeral \& Dr. Leigh Hochberg}}
+
+\fourNoIta{2016 - 2017}
+{Research Assistant}
+{BrainGate, Brown University, Providence, RI}
+{Implemented steady state Kalman filter in closed-loop auto-updating brain-computer interface (BCI) calibration system. Honors thesis research in idle state detection in BCIs in human motor and premotor cortex. \emph{Supervisors: Dr. Leigh Hochberg \& Dr. David Brandman}}
+	
+\fourNoIta{2015 - 2016}
+{Research Assistant}
+{Omarlab, Brown University, Providence, RI}
+{Analyzed shape of brain rhythms in running rats to evaluate their usefulness as an analytical metric. Work on figures and logic for first-author journal article. Developed Matlab toolbox for brain rhythm shape analysis. Shadowed epileptologist at Rhode Island Hospital. \emph{Supervisor: Dr. Omar Ahmed}}
+
+\fourNoIta{2014 - 2017}
+{Matlab Consultant}
+{Burwell Lab, Brown University, Providence, RI}
+{Wrote and maintained Matlab code for colleagues' analyses and data processing, and tutored lab members in Matlab. \emph{Supervisor: Dr. Rebecca Burwell}}
+
+\fourNoIta{Summer 2014, 2013}
+{Research Assistant}
+{Cashlab, Massachusetts General Hosp., Boston, MA}
+{Developed affordable OpBox rat operant conditioning chamber with Dr. Eyal Kimchi. Developed Semiology Diagnostic Tool to objectively diagnose region of seizure onset and settle conflicts during surgical meetings. Developed Matlab toolbox to detect high-frequency oscillations in epilepsy data. \emph{Supervisors: Dr. Sydney Cash \& Dr. Brandon Westover}}
+
+\end{newSection}
+
+% ------------------------------------------------
+% ****** Honors and Awards *********
+% ------------------------------------------------
+
+\begin{newSection}{Honors, Awards, \& Grants}
+
+\three
+{2024}
+{Forbes 30 Under 30, Manufacturing \& Industry (\emph{\href{https://www.forbes.com/profile/senra-systems}{read more}})}
+{Forbes}
+
+\three
+{2018}
+{RISG Space Grant (\emph{\$1,000}) with team}
+{NASA Rhode Island Space Grant Consortium}
+
+\three
+{2017}
+{Brown Design Workshop Maker Grant (\emph{\$500}) with team}
+{Brown University}
+
+\three
+{2017}
+{Prize4Life ALS Hackathon winner (\emph{\$1,000 prize})}
+{Prize4Life, Inc.}
+
+\three
+{2017}
+{Sc. B. in Neuroscience with Honors, Magna Cum Laude}
+{Brown University}
+
+\three
+{2015} 
+{Matthew Siravo Undergraduate Award in Epilepsy}
+{Brown University}
+
+\three
+{2010 - 13}
+{Campbell Medal, Gardner Prize, two scholarships, NHS}
+{Boston Latin School}
+
+\end{newSection}
+
+% ------------------------------------------------
+% ****** Peer-Reviewed Publications *********
+% ------------------------------------------------
+
+\begin{newSection}{Peer-Reviewed Publications}
+
+\article
+{2020}
+{EY Kimchi, BF Coughlin, {\bf BE Shanahan}, G Piantoni, J Pezaris, SS Cash}
+{OpBox: Open source tools for simultaneous EEG and EMG acquisition from multiple subjects}
+{eNeuro}
+
+\article
+{2020}
+{M Ghosh*, {\bf BE Shanahan*}, SC Furtak, GA Mashour, RD Burwell, OJ Ahmed}
+{Instantaneous amplitude and shape of postrhinal theta oscillations differentially encode running speed}
+{Behavioral Neuroscience}
+
+\article
+{2018}
+{DM Brandman, T Hosman, J Saab, MC Burkhart, {\bf BE Shanahan}, JG Ciancibello, AA Sarma, DJ Milstein, CE Vargas-Irwin, B Franco, J Kelemen, C Blabe, BA Murphy, DR Young, FR Willett, C Pandarinath, SD Stavisky, RF Kirsch, BL Walter, AB Ajiboye, SS Cash, EN Eskandar, JP Miller, JA Sweet, KV Shenoy, JM Henderson, B Jarosiewicz, MT Harrison, JD Simeral, and LR Hochberg}
+{Rapid calibration of an intracortical brain–computer interface for people with tetraplegia}
+{Journal of Neural Engineering}
+
+\end{newSection}
+
+ % ------------------------------------------------
+ % ****** Abstracts *********
+ % ------------------------------------------------
+
+\begin{newSection}{Abstracts}
+
+\abstractEntryBasic
+{2018}
+{Neural Interfaces Conference}
+{Minneapolis, MN}
+{A Mobile High-Performance Neural Processing Platform for Next-Generation High Channel-Count iBCIs}
+{C Heelan, {\bf BE Shanahan}, DM Brandman, AN Dusang, JD Simeral, and AV Nurmikko.}
+
+\abstractEntryBasic
+{2015}
+{Society for Neuroscience}
+%{Poster -- Accepted}
+{Chicago}
+{OpBox: Open-source development of customized and cost-effective hardware and software for behavioral neurophysiology}
+{BF Coughlin, {\bf BE Shanahan}, G Piantoni, SS Cash, EY Kimchi.}
+
+\abstractEntryBasic
+{2014}
+{American Epilepsy Society}
+%{Poster -- Accepted}
+{Washington, DC}
+{Human Single Neuron Correlates Of High Frequency Oscillations During Seizures}
+{OJ Ahmed, MA Kramer, JS Naftulin, {\bf BE Shanahan}, EN Eskandar, R Cosgrove, NS Potter, A Blum, L Hochberg, SS Cash.}
+
+\end{newSection}
+
+% ------------------------------------------------
+ % ****** Patents *********
+ % ------------------------------------------------
+
+% \begin{newSection}{Patents}
+
+% \patentEntryBasic
+% {2020}
+% {Systems and methods for labeling large datasets of physiological records based on unsupervised machine learning}
+% {Sharanya Desai, Ph.D., {\bf Benjamin Shanahan}, Tom Tcheng, Ph.D.}
+% {Provisional}
+
+% \end{newSection}
+
+ % ------------------------------------------------
+ % ****** Presentations and Talks ******
+ % ------------------------------------------------
+ 
+\begin{newSection}{Presentations \& Talks}
+
+\four
+{2018}
+{NASA Rhode Island Space Grant Symposium}
+{Providence, RI}
+{Talk with my team on rocket flight computer development and motor testing (\href{https://docs.google.com/presentation/d/1OxAxDKqtxr4odVjT6q38U2s4oX1R2K-lVKEJCeqgmxo/edit?usp=sharing}{slides}).}
+
+\end{newSection}
+ 
+ % ------------------------------------------------
+ % ****** Skills and Interests ******
+ % ------------------------------------------------
+
+% \clearpage  % remove once CV expands across page break
+\begin{newSection}{Skills \& Interests}
+
+\two{Projects}{Rocket flight computer that deploys a parachute at apogee, autonomous drone delivery with a web app, real-time audio LED visualizers, a Spotify playlist app, and Jot, an open-source markdown editor. Co-founded and ran an art-centric club at Brown for 2.5 years. More at \href{https://benshanahan.dev}{\bf{benshanahan.dev}}.}
+\two{Tools}{Fusion 360, Adobe Illustrator, Photoshop}
+\two{Language}{English (native), French (conversational), Spanish (reading and writing), Latin (studied)}
+\two{Personal}{Climbing, volleyball, running, hiking, biking, and music.}
+
+\end{newSection}
+
+\end{document}

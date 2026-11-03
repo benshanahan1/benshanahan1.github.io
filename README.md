@@ -1,38 +1,27 @@
-# My portfolio
-Source for my portfolio website.
+# benshanahan.dev
 
-This page is hosted from GitHub pages: https://benshanahan1.github.io
+Astro site for benshanahan.dev, drawn as an engineering drawing set.
 
-## Install
-Current requires:
-```bash
-$ npm --version
-7.5.1
-$ node --version
-v15.8.0
 ```
-
-Clone the repository and run:
-```bash
 npm install
+npm run dev      # http://localhost:4321
+npm run build    # static site in dist/
+npm run deploy   # build, then push dist/ to the master branch (GitHub Pages)
+npm run cv       # recompile the CV into public/cv.pdf (needs Docker)
 ```
 
-## Develop
-To run a development server and open the hot-reloadable page in the browser:
-```bash
-npm start
-```
+## Where things live
 
-## Build
-To create a **local** production build:
-```bash
-npm run build
-```
+- `src/data/revs.js`: the revision history. One list feeds both the home page table and the flags in the brain figure.
+- `src/data/site.js`: name, contact links and press.
+- `src/content/projects/*.md`: one file per project. Frontmatter makes the card on /projects/; the body is the project page. Set `listed: false` to keep a page live without linking to it (Shelfie, for now).
+  - A paragraph holding only `![alt](/img/x.jpg "Caption")` becomes a numbered figure.
+  - For videos or anything else, use `<figure class="fig" data-caption="Caption">...</figure>`.
+- `src/pages/`: home, projects list, and the project page template.
+- `src/scripts/brain.js`: Fig. 1. It's seeded, so it draws the same every time.
+- `src/scripts/sheet.js`: frame zone markers, reveal on scroll, theme toggle, and the 1 and 2 keys.
+- `src/styles/global.css`: all styles. Colors are tokens at the top, with dark mode below them.
+- `public/brand/`: favicon and logo (see `docs/brand.md`).
+- `cv/`: LaTeX source for the CV. Edit it, run `npm run cv`, and commit `public/cv.pdf`. It compiles with pdfLaTeX in the `texlive/texlive` Docker image, and the date on the CV is the day you ran it. The site links to `/cv.pdf`.
 
-## Deploy
-To deploy the site to GitHub pages:
-```bash
-npm run deploy
-```
-
-If the site no longer shows up at the custom domain, you might need to go into the repo settings and update the custom domain. For some reason, deploying to GitHub pages seems to reset this field every time.
+If you change `src/lib/figures.mjs`, delete `.astro/` before building. Astro caches rendered Markdown.

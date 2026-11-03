@@ -1,0 +1,40 @@
+---
+// Every page is one sheet of the drawing: frame, topbar, content, title block.
+import "../styles/global.css";
+import Topbar from "../components/Topbar.astro";
+import TitleBlock from "../components/TitleBlock.astro";
+import { NAME } from "../data/site.js";
+
+const { title, description, sheet = "1", dwg } = Astro.props;
+const fullTitle = title ? `${title} | ${NAME}` : NAME;
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{fullTitle}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+  <link rel="icon" href="/brand/favicon.ico" sizes="32x32" />
+  <link rel="icon" href="/brand/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/brand/apple-touch-icon.png" />
+  <link rel="manifest" href="/brand/site.webmanifest" />
+  <meta name="theme-color" content="#f0f0f0" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#21262e" media="(prefers-color-scheme: dark)" />
+  <script is:inline>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..600&family=Instrument+Serif:ital@0;1&family=Martian+Mono:wdth,wght@75..112.5,300..600&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="mask mask--t"></div><div class="mask mask--b"></div><div class="mask mask--l"></div><div class="mask mask--r"></div>
+  <div class="frame" aria-hidden="true"></div>
+  <div class="sheet">
+    <Topbar sheet={sheet} />
+    <slot />
+    <TitleBlock sheet={sheet} dwg={dwg} />
+  </div>
+  <script>import "../scripts/sheet.js";</script>
+</body>
+</html>

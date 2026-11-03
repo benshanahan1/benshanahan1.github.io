@@ -1,0 +1,22 @@
+---
+import { NAME } from "../data/site.js";
+const { sheet } = Astro.props;
+const tabs = [["1", "Home", "/"], ["2", "Projects", "/projects/"]];
+---
+<header class="topbar mono">
+  <a class="topbar__mark" href="/">
+    <svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M0 0H32V32H0Z M2 2V30H30V2Z M11 5h4v4h-4Z M17 5h4v4h-4Z M5 11h4v4h-4Z M11 11h4v4h-4Z M17 11h4v4h-4Z M23 11h4v4h-4Z M5 17h4v4h-4Z M11 17h4v4h-4Z M17 17h4v4h-4Z M23 17h4v4h-4Z M11 23h4v4h-4Z M17 23h4v4h-4Z"/></svg>
+    <b>{NAME}</b>
+  </a>
+  {tabs.map(([no, label, href]) => (
+    <a class="tab" href={href} aria-current={sheet === no ? "page" : undefined}><span class="tab__no">0{no}</span>{label}</a>
+  ))}
+  <button class="tb-btn tb-btn--icon" type="button" id="theme-btn" aria-label="Theme: auto. Change theme" title="Theme: auto">
+    <!-- auto: half filled, follows the device -->
+    <svg class="ti-auto" viewBox="0 0 18 18" aria-hidden="true"><rect x="1.5" y="1.5" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M1.5 1.5H16.5L1.5 16.5Z" fill="currentColor"/></svg>
+    <!-- light: sun -->
+    <svg class="ti-light" viewBox="0 0 18 18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="5.5" y="5.5" width="7" height="7"/><path d="M9 0.5V3M9 15V17.5M0.5 9H3M15 9H17.5M3 3L4.8 4.8M13.2 13.2L15 15M15 3L13.2 4.8M4.8 13.2L3 15"/></svg>
+    <!-- dark: moon -->
+    <svg class="ti-dark" viewBox="0 0 18 18" aria-hidden="true"><path d="M11.5 1.5A7.5 7.5 0 1 0 16.5 13 6 6 0 0 1 11.5 1.5Z" fill="currentColor"/></svg>
+  </button>
+</header>
