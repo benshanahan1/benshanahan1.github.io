@@ -54,15 +54,22 @@ function buildReveal() {
   }
   const io = new IntersectionObserver(
     (es) => es.forEach((e) => {
-      if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); }
+      if (e.isIntersecting) {
+        e.target.classList.add("is-in");
+        e.target.classList.remove("is-pending");
+        io.unobserve(e.target);
+      }
     }),
     { rootMargin: "0px 0px -8% 0px" }
   );
+  const pending = [];
   items.forEach((n) => {
     // anything already on screen shows immediately; the rest waits for scroll
     if (n.getBoundingClientRect().top < window.innerHeight * 0.92) n.classList.add("is-in");
-    else io.observe(n);
+    else { io.observe(n); pending.push(n); }
   });
+  // Opt in to hiding only after the observer has successfully registered every item.
+  pending.forEach((n) => n.classList.add("is-pending"));
 }
 
 // Theme: auto (follow device) → light → dark. Saved per visitor.

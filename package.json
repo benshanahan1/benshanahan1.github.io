@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "test": "playwright test",
     "preview": "astro preview",
     "deploy": "astro build && gh-pages -b master -d dist --dotfiles",
     "cv": "sh scripts/build-cv.sh"
@@ -14,6 +15,7 @@
     "astro": "7.4.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.64.1",
     "gh-pages": "6.3.0"
   }
 }

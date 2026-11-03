@@ -337,7 +337,8 @@ export function buildBrain(host, REVS) {
     const lx2 = bx - Math.cos(ang) * 12, ly2 = by - Math.sin(ang) * 12;
     el("path", { d: `M ${lx1} ${ly1} L ${lx2} ${ly2}`, class: "leader" }, gAnno);
     el("circle", { cx: lx1, cy: ly1, r: 1.6, fill: "var(--ink-2)" }, gAnno);
-    const b = el("g", { class: `balloon ${r.now ? "balloon--now" : ""}`, "data-rev": r.rev, tabindex: 0 }, gAnno);
+    // The SVG is one accessible image; the table's native buttons provide keyboard control.
+    const b = el("g", { class: `balloon ${r.now ? "balloon--now" : ""}`, "data-rev": r.rev }, gAnno);
     el("path", { d: `M ${bx} ${by - 16} L ${bx + 16} ${by + 11} L ${bx - 16} ${by + 11} Z` }, b);
     const t = el("text", { x: bx, y: by + 3 }, b);
     t.textContent = r.rev;
@@ -387,12 +388,14 @@ export function buildBrain(host, REVS) {
   }
 
   /* --- linking: table rows <-> figure. Hover previews a rev alongside the pinned one; click pins it until you click again. --- */
+  const buttons = document.querySelectorAll(".rev-toggle");
   const setHot = (rev) => {
     document.querySelectorAll(".is-hot, .is-pinned").forEach((n) => n.classList.remove("is-hot", "is-pinned"));
     figure.classList.toggle("has-hot", !!(rev || pinned));
     for (const r of new Set([rev, pinned])) {
       if (r) document.querySelectorAll(`[data-rev="${r}"]`).forEach((n) => n.classList.add("is-hot", ...(r === pinned ? ["is-pinned"] : [])));
     }
+    buttons.forEach((button) => button.setAttribute("aria-pressed", String(button.closest("[data-rev]").dataset.rev === pinned)));
   };
   let pinned = null;
   const restore = () => setHot(null);
@@ -412,8 +415,8 @@ export function buildBrain(host, REVS) {
     n.classList.add("is-pickable");
     n.addEventListener("mouseenter", () => setHot(rev));
     n.addEventListener("mouseleave", restore);
-    n.addEventListener("focus", () => setHot(rev));
-    n.addEventListener("blur", restore);
+    n.addEventListener("focusin", () => setHot(rev));
+    n.addEventListener("focusout", restore);
     n.addEventListener("click", (e) => {
       if (e.target.closest("a")) return; // links inside a row still just navigate
       e.stopPropagation();
@@ -421,15 +424,9 @@ export function buildBrain(host, REVS) {
       if (pinned) burst(rev);
       if (inFig && pinned) reveal(rev);
     });
-    n.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        toggle(rev);
-        if (pinned) burst(rev);
-        if (inFig && pinned) reveal(rev);
-      }
-    });
   });
+  // Native buttons synthesize clicks for Enter and Space without intercepting nested links.
+  buttons.forEach((button) => { button.disabled = false; });
   // start with the current rev selected
   pinned = REVS.find((r) => r.now)?.rev ?? null;
   restore();

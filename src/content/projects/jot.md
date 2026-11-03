@@ -16,7 +16,7 @@ specs:
   - ["Source", "<a href=\"https://github.com/benshanahan1/jot\" target=\"_blank\" rel=\"noreferrer\">GitHub</a>"]
 ---
 
-<figure class="fig" data-caption="Jot with a short note open."><img class="shot only-light" src="/img/jot-dark.png" alt="Jot editor screenshot" width="1600" height="1244" loading="lazy" /><img class="shot only-dark" src="/img/jot-light.png" alt="" width="1600" height="1244" loading="lazy" /></figure>
+<figure class="fig" data-caption="Jot with a short note open."><img class="shot only-light" src="/img/jot-dark.png" alt="Jot editor screenshot" width="1600" height="1244" loading="lazy" /><img class="shot only-dark" src="/img/jot-light.png" alt="Jot editor screenshot" width="1600" height="1244" loading="lazy" /></figure>
 
 I wanted a clean place to write that renders markdown as I type, without a sidebar full of features I'd never use. So Jot is just the page.
 

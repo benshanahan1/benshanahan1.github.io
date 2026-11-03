@@ -36,7 +36,7 @@ const newestFirst = [...REVS].reverse();
             <tbody>
               {newestFirst.map((r) => (
                 <tr class={r.now ? "is-current" : undefined} data-rev={r.rev}>
-                  <td class="rev">{r.rev}</td>
+                  <td class="rev"><button class="rev-toggle" type="button" aria-label={`Highlight revision ${r.rev}: ${r.title}`} aria-pressed="false" disabled>{r.rev}</button></td>
                   <td>
                     <span class="t-date mono">{r.date}</span>
                     <span class="t-title">{r.title} {r.tag && <span class={r.now ? "tag tag--hl" : "tag"}>{r.tag}</span>}</span>
