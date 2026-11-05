@@ -38,7 +38,9 @@ export default function figures() {
             const img = kids[0];
             const title = img.properties.title;
             delete img.properties.title;
-            img.properties.loading = "lazy";
+            // the first figure is usually the largest thing on screen, so fetch it right away
+            if (n === 0) img.properties.fetchPriority = "high"; else img.properties.loading = "lazy";
+            img.properties.decoding = "async";
             const size = imageSize(img.properties.src);
             if (size) [img.properties.width, img.properties.height] = size;
             return { type: "element", tagName: "figure", properties: { className: ["fig"] }, children: [img, caption(title)] };

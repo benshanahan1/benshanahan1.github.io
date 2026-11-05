@@ -8,7 +8,8 @@
     "test": "playwright test",
     "preview": "astro preview",
     "deploy": "astro build && gh-pages -b master -d dist --dotfiles",
-    "cv": "sh scripts/build-cv.sh"
+    "cv": "sh scripts/build-cv.sh",
+    "og": "node scripts/og.mjs"
   },
   "dependencies": {
     "@astrojs/markdown-remark": "^7.3.3",

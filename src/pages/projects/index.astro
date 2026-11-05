@@ -2,16 +2,16 @@
 import { getCollection } from "astro:content";
 import Sheet from "../../layouts/Sheet.astro";
 import ProjectCard from "../../components/ProjectCard.astro";
+// newest first; part numbers count down so the oldest project is 01 at the bottom
 const projects = (await getCollection("projects", (p) => p.data.listed)).sort((a, b) => a.data.order - b.data.order);
 ---
 <Sheet title="Projects" description="Side projects by Benjamin Shanahan." sheet="2" dwg="BS-002">
   <section class="page-head reveal is-in">
-    <p class="mono" style="color:var(--ink-3);margin:0">Sheet 2 of 2 &nbsp; Bill of materials</p>
     <h1>Projects</h1>
     <p>Small apps I wanted to use, hardware I wanted to understand, and a treehouse I'd always wanted to build.</p>
   </section>
   {projects.map((p, i) => (
-    <ProjectCard project={p} index={i + 1}>
+    <ProjectCard project={p} index={projects.length - i}>
       {p.id === "jot" && (
         <Fragment>
           <img class="shot only-light" src="/img/jot-dark.png" alt="Jot editor screenshot" width="1600" height="1244" loading="lazy" />

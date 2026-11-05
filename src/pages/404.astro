@@ -1,0 +1,15 @@
+---
+// GitHub Pages serves dist/404.html for any path that doesn't exist.
+import Sheet from "../layouts/Sheet.astro";
+---
+<Sheet title="Not found" description="There's no page at this address." sheet="?" dwg="BS-404">
+  <section class="page-head reveal is-in">
+    <p class="mono" style="color:var(--ink-3);margin:0">Error 404 &nbsp; Sheet not found</p>
+    <h1>Not on the drawing</h1>
+    <p>There's no page at this address. It may have moved when I rebuilt the site.</p>
+    <div class="actions mono" style="margin-top:28px">
+      <a class="btn btn--hl" href="/">Home</a>
+      <a class="btn" href="/projects/">Projects</a>
+    </div>
+  </section>
+</Sheet>

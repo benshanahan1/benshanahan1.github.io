@@ -4,24 +4,60 @@ import { REVS } from "../data/revs.js";
 import { PRESS, SENRA, CAREERS, EMAIL, ROLES } from "../data/site.js";
 const newestFirst = [...REVS].reverse();
 ---
-<Sheet description="Co-founder of Senra, where we build harnesses for aerospace and defense companies. I focus on AI and robotics for precision assembly." sheet="1" dwg="BS-001">
+
+<Sheet
+  description="Co-founder of Senra, where we build wiring for aerospace and defense companies. I apply frontier AI and robotics to automate high-mix assembly at scale."
+  sheet="1"
+  dwg="BS-001"
+>
   <section class="hero">
     <div class="hero__text reveal is-in">
       <h1 class="sr-only">Benjamin Shanahan</h1>
-      <p class="intro">Hi, I'm Ben. I co-founded <a href={SENRA} target="_blank" rel="noreferrer">Senra</a>, where we build harnesses for aerospace and defense companies.</p>
-      <p class="lede">Before Senra I wrote manufacturing software at SpaceX. Before that I studied neuroscience at Brown and worked on brain-computer interfaces.</p>
+      <p class="intro">
+        Hi, I'm Ben. I co-founded <a
+          href={SENRA}
+          target="_blank"
+          rel="noreferrer">Senra</a
+        >, where we build wiring for aerospace and defense companies.
+      </p>
+      <p class="lede">
+        These days I'm applying frontier AI and robotics to automate high-mix
+        assembly at scale. Before Senra I wrote manufacturing software at
+        SpaceX, and before that I studied neuroscience at Brown and worked on
+        brain-computer interfaces.
+      </p>
     </div>
 
     <aside class="hire reveal is-in" aria-label="Hiring">
-      <p class="hire__tag mono"><span class="sq" aria-hidden="true"></span>ECN 0001 &nbsp; Open roles</p>
-      <p>I'm hiring engineers to build Senra's robotics program from the ground up. The problems come straight from our factory floor, and you'll build alongside the technicians who use your work. These roles are in Cypress, CA, and report to me.</p>
-      {ROLES.length > 0 && (
-        <ul class="hire__roles">
-          {ROLES.map(([title, href]) => <li><a class="ext" href={href} target="_blank" rel="noreferrer">{title}</a></li>)}
-        </ul>
-      )}
+      <p class="hire__tag mono">
+        <span class="sq" aria-hidden="true"></span>ECN 0001 &nbsp; Open roles
+      </p>
+      <p>
+        I'm hiring 0-to-1 engineers to build Senra's robotics program from the
+        ground up with me. You'll build and iterate right alongside the
+        technicians who use what you make. The roles are in Cypress, CA, and
+        report directly to me.
+      </p>
+      {
+        ROLES.length > 0 && (
+          <ul class="hire__roles">
+            {ROLES.map(([title, href]) => (
+              <li>
+                <a class="ext" href={href} target="_blank" rel="noreferrer">
+                  {title}
+                </a>
+              </li>
+            ))}
+          </ul>
+        )
+      }
       <div class="actions mono">
-        <a class="btn btn--hl ext" href={CAREERS} target="_blank" rel="noreferrer">Come build with me</a>
+        <a
+          class="btn btn--hl ext"
+          href={CAREERS}
+          target="_blank"
+          rel="noreferrer">Come build with me</a
+        >
         <a class="btn ext" href={`mailto:${EMAIL}`}>Email me</a>
       </div>
     </aside>
@@ -34,16 +70,35 @@ const newestFirst = [...REVS].reverse();
           <table class="table">
             <thead><tr><th>Rev</th><th>Revisions</th></tr></thead>
             <tbody>
-              {newestFirst.map((r) => (
-                <tr class={r.now ? "is-current" : undefined} data-rev={r.rev}>
-                  <td class="rev"><button class="rev-toggle" type="button" aria-label={`Highlight revision ${r.rev}: ${r.title}`} aria-pressed="false" disabled>{r.rev}</button></td>
-                  <td>
-                    <span class="t-date mono">{r.date}</span>
-                    <span class="t-title">{r.title} {r.tag && <span class={r.now ? "tag tag--hl" : "tag"}>{r.tag}</span>}</span>
-                    <Fragment set:html={r.desc} />
-                  </td>
-                </tr>
-              ))}
+              {
+                newestFirst.map((r) => (
+                  <tr data-rev={r.rev}>
+                    <td class="rev">
+                      <button
+                        class="rev-toggle"
+                        type="button"
+                        aria-label={`Highlight revision ${r.rev}: ${r.title}`}
+                        aria-pressed="false"
+                        disabled
+                      >
+                        {r.rev}
+                      </button>
+                    </td>
+                    <td>
+                      <span class="t-date mono">{r.date}</span>
+                      <span class="t-title">
+                        {r.title}{" "}
+                        {r.tag && (
+                          <span class={r.now ? "tag tag--hl" : "tag"}>
+                            {r.tag}
+                          </span>
+                        )}
+                      </span>
+                      <Fragment set:html={r.desc} />
+                    </td>
+                  </tr>
+                ))
+              }
             </tbody>
           </table>
         </div>
@@ -60,20 +115,92 @@ const newestFirst = [...REVS].reverse();
   </section>
 
   <section class="block reveal" aria-labelledby="about">
-    <div class="head"><h2 id="about">About</h2><span class="mono">Notes</span></div>
+    <div class="head">
+      <h2 id="about">About</h2><span class="mono">Notes</span>
+    </div>
     <div class="about">
       <div class="prose">
-        <p>I built my first website in 2005, when I was ten. Around the same time, a LEGO Mindstorms kit gave me my first taste of robotics. In early high school at Boston Latin, my dad got me an Arduino kit, and I started teaching myself electronics: soldering, reading schematics and building circuits.</p>
-        <p>I love art and making music as much as hardware. Some of my favorite projects bring those interests together, like <a href="/projects/audiolux/">Audiolux</a>, a light show that reacts to music in real time. At Brown, I studied neuroscience and got into brain-computer interfaces, where hardware, software and the brain all came together. I graduated magna cum laude in 2017, with honors in neuroscience, and spent the next year in the BrainGate lab building a real-time monitoring system for the research cart.</p>
-        <p>From there I went to NeuroPace, building tools that brought research to doctors, then to SpaceX, working on Warpdrive and manufacturing software in the Starlink factory. In 2023, Jordan Black and I started <a href="https://senrasystems.us" target="_blank" rel="noreferrer">Senra</a> to fix the wire harness problems we kept running into at SpaceX. I spent our first three years building Amp with the team. Now I'm focused on robotics and AI for the technicians in our factory.</p>
-        <p>I love understanding how things work and sticking with hard problems until the pieces click. Outside work, I tend to pick one activity and go deep for a year or so, whether that's climbing, volleyball, running, hiking or biking. I also make time for <a href="/projects/">hobby projects</a> and enjoy cooking when I'm not in a rush.</p>
+        <p>
+          I built my first website in 2005, when I was ten. A few years later I
+          got a LEGO Mindstorms kit for my birthday, and it started an obsession
+          with building things that interact with the world. In high school my
+          dad gave me an Arduino starter kit over the holidays, and I taught
+          myself to solder, read schematics, and build simple circuits and
+          robots. To me, building hardware and software is as creative as art or
+          music, and some of my favorite projects mix them, like <a
+            href="/projects/audiolux/">Audiolux</a
+          >, a light show that reacts to music in real time.
+        </p>
+        <p>
+          At Brown I studied neuroscience and found my way into brain-computer
+          interface research in the BrainGate lab, where hardware, software and
+          my degree all came together. I wrote my honors thesis there on
+          detecting idle-state brain activity with machine learning classifiers,
+          and graduated magna cum laude in 2017. I stayed on for a year after
+          that. I built a real-time monitoring system for the research cart, and
+          worked with a grad student to miniaturize the cart, shrinking its
+          amplifiers and signal processing onto a single FPGA, which taught me
+          to think in clock cycles. I also reverse-engineered the lab's
+          recording software so our version could drop in for the cart, writing
+          the same data format all of BrainGate's analysis was built on.
+        </p>
+        <p>
+          Next I moved to Silicon Valley to join NeuroPace, which makes an
+          implanted device for epilepsy. Embedded with the research team, I
+          built web-based visualization and treatment-suggestion tools that
+          brought their machine learning research to doctors. Looking back,
+          BrainGate and NeuroPace gave me an early start on the building blocks
+          of today's AI: classifiers, neural nets, LSTMs, and t-SNE for making
+          sense of high-dimensional neural data. Mid-pandemic I moved to LA to
+          join SpaceX, where I worked on Warpdrive, on the manufacturing
+          execution system (MES) that built Starlink user terminals and Wi-Fi
+          routers at high rate, and briefly on telemetry systems that record
+          continuous high-rate data from the whole Starlink fleet.
+        </p>
+        <p>
+          At SpaceX I met Jordan Black, and in 2023 we started <a
+            href={SENRA}
+            target="_blank"
+            rel="noreferrer">Senra</a
+          > to fix the wire harness design, procurement, and quality problems SpaceX
+          and countless other customers kept running into. We'd both built and used
+          high- and low-rate manufacturing systems firsthand, and we knew the solution
+          consisted of an end-to-end software platform and a smart factory built in
+          tandem from the ground up. For the first three years I built our harness
+          design tool and ERP/MES with the software team, which we later merged into
+          one platform, Amp. Since mid-2026 I've been leading our frontier automation
+          program, using robotics and AI to speed up the build for our technicians.
+        </p>
+        <p>
+          What drives me is understanding how things work and fit together. I
+          love hard problems with no clear solution, and I like to stick with
+          them until the pieces click. I've always been a 0-to-1 guy, and Senra
+          is the best version of that I've found: a problem that matters to the
+          whole industrial base, where the answer spans process, people, and a
+          lot of technology stitched together at scale. Most of my free time
+          goes into Senra too. Beyond that I make electronic music and art,
+          climb, play volleyball, run, hike, bike, cook when I have time, go on
+          walks with my wife, and pick up the occasional <a href="/projects/"
+            >hobby project</a
+          >.
+        </p>
       </div>
       <figure class="portrait">
         <div class="portrait__img">
-          <img src="/img/ben-portrait.jpg" alt="Benjamin Shanahan" width="866" height="1294" />
-          <i class="crop crop--tl"></i><i class="crop crop--tr"></i><i class="crop crop--bl"></i><i class="crop crop--br"></i>
+          <img
+            src="/img/ben-portrait.jpg"
+            alt="Benjamin Shanahan"
+            width="866"
+            height="1294"
+            loading="lazy"
+            decoding="async"
+          />
+          <i class="crop crop--tl"></i><i class="crop crop--tr"></i><i
+            class="crop crop--bl"></i><i class="crop crop--br"></i>
         </div>
-        <figcaption class="mono"><span>Fig. 2</span><span>B. Shanahan</span></figcaption>
+        <figcaption class="mono">
+          <span>Fig. 2</span><span>B. Shanahan</span>
+        </figcaption>
       </figure>
     </div>
   </section>
@@ -83,9 +210,15 @@ const newestFirst = [...REVS].reverse();
     <table class="table">
       <thead><tr><th>Ref</th><th>Article</th><th class="hide-sm">Source</th></tr></thead>
       <tbody>
-        {PRESS.map(([title, href, source], i) => (
-          <tr><td class="rev">R{i + 1}</td><td><a class="t-title ext" href={href} target="_blank" rel="noreferrer">{title}</a></td><td class="date hide-sm">{source}</td></tr>
-        ))}
+        {
+          PRESS.map(([title, href, source], i) => (
+            <tr>
+              <td class="rev">R{i + 1}</td>
+              <td><a class="t-title ext" href={href} target="_blank" rel="noreferrer">{title}</a></td>
+              <td class="date hide-sm">{source}</td>
+            </tr>
+          ))
+        }
       </tbody>
     </table>
   </section>

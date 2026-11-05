@@ -34,6 +34,31 @@ function spline(P) {
   return d;
 }
 
+// n points evenly spaced along a path of cubics ("M x y C ..."), and its length. Same as
+// getPointAtLength, without asking the browser to re-walk the path for every point.
+function sampleCubics(d, n) {
+  const v = d.match(/-?[\d.]+/g).map(Number);
+  const pts = [[v[0], v[1]]], acc = [0];
+  for (let i = 2; i + 5 < v.length; i += 6) {
+    const [x0, y0] = pts[pts.length - 1];
+    for (let k = 1; k <= 256; k++) {
+      const t = k / 256, u = 1 - t, a = u * u * u, b = 3 * u * u * t, c = 3 * u * t * t, e = t * t * t;
+      const q = [a * x0 + b * v[i] + c * v[i + 2] + e * v[i + 4], a * y0 + b * v[i + 1] + c * v[i + 3] + e * v[i + 5]];
+      const [px, py] = pts[pts.length - 1];
+      acc.push(acc[acc.length - 1] + Math.hypot(q[0] - px, q[1] - py));
+      pts.push(q);
+    }
+  }
+  const L = acc[acc.length - 1];
+  const out = [];
+  for (let i = 0, j = 0; i < n(L); i++) {
+    const s = (i / n(L)) * L;
+    while (acc[j + 1] < s) j++;
+    const f = (s - acc[j]) / (acc[j + 1] - acc[j] || 1);
+    out.push([pts[j][0] + (pts[j + 1][0] - pts[j][0]) * f, pts[j][1] + (pts[j + 1][1] - pts[j][1]) * f]);
+  }
+  return [out, L];
+}
 
 // Lateral view, frontal lobe to the left.
 // One outline for cerebrum + cerebellum; the transverse fissure is drawn inside.
@@ -101,8 +126,8 @@ export function buildBrain(host, REVS) {
   const along = (u, d) => [CX + u * cs + d * sn, TRUNK_TOP - u * sn + d * cs];
   const cableG = (layer) => el("g", { transform: `rotate(${-tilt} ${CX} ${TRUNK_TOP})` }, layer);
   const [bl, br] = [along(-sleeveW, CLEN), along(sleeveW, CLEN)];
-  const sleeve = `M ${trunkX(TRUNK_TOP) - sleeveW} ${TRUNK_TOP} L ${bl[0]} ${bl[1]} ` +
-    `L ${br[0]} ${br[1]} L ${trunkX(TRUNK_TOP) + sleeveW} ${TRUNK_TOP} Z`;
+  const sleeve = `M ${CX - sleeveW} ${TRUNK_TOP} L ${bl[0]} ${bl[1]} ` +
+    `L ${br[0]} ${br[1]} L ${CX + sleeveW} ${TRUNK_TOP} Z`;
   el("path", { d: sleeve, class: "harness-sleeve" }, gHarness);
   el("path", { d: sleeve, fill: "url(#braid)", opacity: 0.9 }, gHarness);
   // heat-shrink bands + label sleeve, tilted to follow the cable
@@ -149,11 +174,7 @@ export function buildBrain(host, REVS) {
   // Lumpy outline: gyri of uneven width and height, notches of uneven depth,
   // the odd flat stretch, and a slow wobble along the whole edge.
   const gyrify = (d, amp) => {
-    const p = el("path", { d }, svg);
-    const L = p.getTotalLength(), n = Math.round(L / 2.5);
-    const pts = [];
-    for (let i = 0; i < n; i++) { const q = p.getPointAtLength((i / n) * L); pts.push([q.x, q.y]); }
-    p.remove();
+    const [pts, L] = sampleCubics(d, (len) => Math.round(len / 2.5)), n = pts.length;
     const cx = pts.reduce((a, q) => a + q[0], 0) / n, cy = pts.reduce((a, q) => a + q[1], 0) / n;
     const segs = [];
     for (let s0 = 0; s0 < L; ) {
@@ -181,14 +202,13 @@ export function buildBrain(host, REVS) {
     return [spline([...out, out[0]]) + " Z", out];
   };
   const [brain, edge] = gyrify(BRAIN, 5.5);
-  const brainPath = el("path", { d: brain, class: "b-fill" }, gBrain);
+  el("path", { d: brain, class: "b-fill" }, gBrain);
   // Wires vanish into the cable: everything of the harness that lies
   // outside the brain outline is drawn again on top of them.
   el("path", { d: `M -100 -100 H 800 V 800 H -100 Z ${brain}`, "clip-rule": "evenodd" }, el("clipPath", { id: "occ-clip" }, defs));
   el("rect", { x: 320, y: 330, width: 90, height: 70 }, el("clipPath", { id: "seam-clip" }, defs));
   [...gHarness.childNodes].forEach((n) => gOcc.appendChild(n.cloneNode(true)));
   el("path", { d: brain, class: "b-outline" }, gSeam);
-  const cbPath = el("path", { d: CEREBELLUM, fill: "none", stroke: "none" }, gBrain);
   // nearest outline point (the spline passes through these)
   const snap = ([x, y]) => edge
     .reduce((b, q) => (Math.hypot(q[0] - x, q[1] - y) < Math.hypot(b[0] - x, b[1] - y) ? q : b))
@@ -210,13 +230,12 @@ export function buildBrain(host, REVS) {
   });
   el("path", { d: brain, class: "b-outline draw" }, gBrain);
 
+  // hit tests run on a canvas: same path geometry as the SVG, much cheaper per point
+  const ctx = document.createElement("canvas").getContext("2d");
+  const brainHit = new Path2D(brain), cbHit = new Path2D(CEREBELLUM);
   const inside = (x, y, m = 0, zone = "cortex") => {
-    if (!brainPath.isPointInFill) return true;
     const pts = m ? [[x, y], [x + m, y], [x - m, y], [x, y + m], [x, y - m]] : [[x, y]];
-    return pts.every(([px, py]) => {
-      const q = new DOMPoint(px, py);
-      return brainPath.isPointInFill(q) && cbPath.isPointInFill(q) === (zone === "cb");
-    });
+    return pts.every(([px, py]) => ctx.isPointInPath(brainHit, px, py) && ctx.isPointInPath(cbHit, px, py) === (zone === "cb"));
   };
 
   /* --- wires: a harness tree. trunk → junctions (tie-wraps) → breakouts → neurons --- */

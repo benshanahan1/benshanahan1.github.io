@@ -9,6 +9,7 @@ npm run build    # static site in dist/
 npm test         # browser regression tests against a fresh production build
 npm run deploy   # build, then push dist/ to the master branch (GitHub Pages)
 npm run cv       # recompile the CV into public/cv.pdf (needs Docker)
+npm run og       # re-render the link-preview image public/og.png (needs npm run dev running)
 ```
 
 For the first test run, install Chromium with `npx playwright install chromium`.
@@ -22,11 +23,13 @@ JavaScript is unavailable, and Jot screenshot descriptions across themes.
 - `src/content/projects/*.md`: one file per project. Frontmatter makes the card on /projects/; the body is the project page. Set `listed: false` to keep a page live without linking to it (Shelfie, for now).
   - A paragraph holding only `![alt](/img/x.jpg "Caption")` becomes a numbered figure.
   - For videos or anything else, use `<figure class="fig" data-caption="Caption">...</figure>`.
-- `src/pages/`: home, projects list, and the project page template.
+- `src/pages/`: home, projects list, the project page template, and the 404 page.
 - `src/scripts/brain.js`: Fig. 1. It's seeded, so it draws the same every time.
 - `src/scripts/sheet.js`: frame zone markers, reveal on scroll, theme toggle, and the 1 and 2 keys.
 - `src/styles/global.css`: all styles. Colors are tokens at the top, with dark mode below them.
 - `public/brand/`: favicon and logo (see `docs/brand.md`).
+- `public/og.png`: the link-preview card, rendered from Fig. 1 by `scripts/og.mjs`. Re-run `npm run og` when the figure or your title changes.
+- `public/.nojekyll`: keeps GitHub Pages from running Jekyll, which would drop the `_astro/` folder.
 - `cv/`: LaTeX source for the CV. Edit it, run `npm run cv`, and commit `public/cv.pdf`. It compiles with pdfLaTeX in the `texlive/texlive` Docker image, and the date on the CV is the day you ran it. The site links to `/cv.pdf`.
 
-If you change `src/lib/figures.mjs`, delete `.astro/` before building. Astro caches rendered Markdown.
+If you change `src/lib/figures.mjs`, stop the dev server and delete `node_modules/.astro/` before building. Astro caches rendered Markdown there.

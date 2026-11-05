@@ -329,7 +329,7 @@ img { max-width: 100%; display: block; }
 .prose p:last-child { margin-bottom: 0; }
 .prose strong { color: var(--ink); font-weight: 600; }
 
-.portrait { margin: 0; position: relative; }
+.portrait { margin: 0; position: sticky; top: calc(var(--frame) + 40px); } /* rides along with the About text, then scrolls away */
 .portrait__img { position: relative; border: 1px solid var(--ink); padding: 8px; background: var(--paper); }
 .portrait__img img {
   filter: grayscale(1) contrast(1.05);
@@ -412,6 +412,7 @@ a.t-title:hover, .table a:hover .t-title { background: var(--hl-soft); }
 /* ---------- Bench: parts ---------- */
 .page-head { padding: clamp(32px, 6vh, 64px) 0 clamp(20px, 4vh, 40px); max-width: 46em; }
 .page-head h1 { font: 400 clamp(46px, 6vw, 84px)/0.95 var(--f-display); margin: 18px 0 18px; letter-spacing: -0.015em; }
+.page-head h1:first-child { margin-top: 0; }
 .page-head p { color: var(--ink-2); font-size: 18.5px; margin: 0; }
 
 .part {
@@ -447,7 +448,6 @@ a.t-title:hover, .table a:hover .t-title { background: var(--hl-soft); }
 .cells > div:last-child { border-right: 0; }
 .cells small { display: block; color: var(--ink-3); font-size: 9.5px; }
 .cells span { color: var(--ink); }
-.cells .hot span { background: var(--hl); color: var(--hl-ink); padding: 0 4px; margin: 0 -4px; }
 
 .phone {
   width: 196px; aspect-ratio: 9 / 19;
@@ -516,7 +516,7 @@ a.t-title:hover, .table a:hover .t-title { background: var(--hl-soft); }
   .trace__scroll { position: static; overflow: visible; }
   .about, .doc { grid-template-columns: 1fr; }
   .aside { position: static; order: -1; }
-  .portrait { max-width: 260px; }
+  .portrait { max-width: 260px; position: static; }
   .titleblock { grid-template-columns: 1fr 1fr 1fr; }
   .tb--name, .tb--co { grid-row: auto; grid-column: 1 / -1; }
   .tb--links { grid-column: 1 / -1; flex-wrap: wrap; }

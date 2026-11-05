@@ -1,5 +1,6 @@
 ---
 // Every page is one sheet of the drawing: frame, topbar, content, title block.
+import "../styles/fonts.css";
 import "../styles/global.css";
 import Topbar from "../components/Topbar.astro";
 import TitleBlock from "../components/TitleBlock.astro";
@@ -16,6 +17,17 @@ const fullTitle = title ? `${title} | ${NAME}` : NAME;
   <title>{fullTitle}</title>
   <meta name="description" content={description} />
   <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+  <!-- link previews; og.png is rendered by npm run og -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content={NAME} />
+  <meta property="og:title" content={fullTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={new URL(Astro.url.pathname, Astro.site)} />
+  <meta property="og:image" content={new URL("/og.png", Astro.site)} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Benjamin Shanahan, with Fig. 1: a brain whose brainstem is a wire harness" />
+  <meta name="twitter:card" content="summary_large_image" />
   <link rel="icon" href="/brand/favicon.ico" sizes="32x32" />
   <link rel="icon" href="/brand/favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="/brand/apple-touch-icon.png" />
@@ -23,9 +35,12 @@ const fullTitle = title ? `${title} | ${NAME}` : NAME;
   <meta name="theme-color" content="#f0f0f0" media="(prefers-color-scheme: light)" />
   <meta name="theme-color" content="#21262e" media="(prefers-color-scheme: dark)" />
   <script is:inline>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..600&family=Instrument+Serif:ital@0;1&family=Martian+Mono:wdth,wght@75..112.5,300..600&display=swap" rel="stylesheet" />
+  <!-- fonts are self-hosted (src/styles/fonts.css); preload the Latin files every page needs -->
+  <link rel="preload" href="/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/instrument-serif-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/martian-mono-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <!-- page views: GoatCounter, cookieless (benshanahan.goatcounter.com); production builds only -->
+  {import.meta.env.PROD && <script is:inline data-goatcounter="https://benshanahan.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>}
 </head>
 <body>
   <div class="mask mask--t"></div><div class="mask mask--b"></div><div class="mask mask--l"></div><div class="mask mask--r"></div>
