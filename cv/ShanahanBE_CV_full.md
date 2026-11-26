@@ -170,6 +170,11 @@ The 2022 CV listed the Forbes entry under 2023 as "Forbes 30 Under 30 2024".
 
 ## Peer-reviewed publications
 
+- **2026.** NV Hahn, E Stein, BrainGate Consortium (incl. **BE Shanahan**), JP Donoghue,
+  JD Simeral, LR Hochberg, FR Willett. *Performance of intracortical microelectrode arrays in
+  people with implanted brain-computer interfaces over a 20-year period.* Nature Medicine.
+  [doi:10.1038/s41591-026-04530-3](https://doi.org/10.1038/s41591-026-04530-3). Listed as a
+  member of the BrainGate Consortium, which is a byline author.
 - **2020.** EY Kimchi, BF Coughlin, **BE Shanahan**, G Piantoni, J Pezaris, SS Cash. *OpBox: Open
   source tools for simultaneous EEG and EMG acquisition from multiple subjects.* eNeuro.
 - **2020.** M Ghosh\*, **BE Shanahan\***, SC Furtak, GA Mashour, RD Burwell, OJ Ahmed.
